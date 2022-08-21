@@ -1,8 +1,14 @@
 # depslib dependency file v1.0
-1661109647 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\main.c
+1661114018 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\main.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<ctype.h>
 	"raylib.h"
+	"controleMatriz.c"
+
+1661114052 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\controlematriz.h
+
+1661114067 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\controlematriz.c
+	"controleMatriz.h"
 
