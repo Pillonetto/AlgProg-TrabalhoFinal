@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1661121931 source:d:\trabalhofinal\trabalho_final\main.c
+	<string.h>
+	"definicoes.h"
+
+1661107569 source:d:\trabalhofinal\trabalho_final\menu_principal.c
+	"definicoes.h"
+
+1661121195 d:\trabalhofinal\trabalho_final\definicoes.h
+	"raylib.h"
+
+1660762897 d:\trabalhofinal\trabalho_final\menu_principal.c
+	"raylib.h"
+	"definicoes.h"
+
+1661120608 source:d:\trabalhofinal\trabalho_final\render_jogo.c
+	"definicoes.h"
+
+1660775814 source:d:\trabalhofinal\trabalho_final\carrega_mapa.c
+	<stdio.h>
+
+1661119034 source:d:\trabalhofinal\trabalho_final\fundo.c
+	"definicoes.h"
+
+1661120501 source:d:\trabalhofinal\trabalho_final\render_player.c
+	"definicoes.h"
+
+1661120643 source:d:\trabalhofinal\trabalho_final\jogo.c
+	"definicoes.h"
+
