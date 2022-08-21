@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1661015873 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\main.c
+1661109647 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\main.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
+	<ctype.h>
 	"raylib.h"
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "raylib.h"
 
 #define MAPA_L 30
@@ -9,6 +10,7 @@
 
 void carrega_mapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas, char *porta, int *escada);
 void moveVert(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, int *escada, int direcao);
+void moveHor(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, int *escada, int direcao);
 void imprime_mapa(char mapa[MAPA_L][MAPA_C], int linhas, int colunas);
 void localiza_jogador(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int *x_jog, int *y_jog);
 void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char porta, int *x_porta, int *y_porta);
@@ -18,44 +20,34 @@ int main(void) {
 
     char mapa[MAPA_L][MAPA_C];
     int linhas, colunas, escada;
-    char porta;
+    char porta, mov;
 
     carrega_mapa(mapa, &linhas, &colunas, &porta, &escada);
 
-    const int screenWidth = 800;
-    const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
-
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose()){
-
-        switch(GetKeyPressed()){
-
-            case KEY_UP:
-                moveVert(mapa, linhas, colunas, &porta, &escada, -1);
-                break;
-            case KEY_DOWN:
-                moveVert(mapa, linhas, colunas, &porta, &escada, 1);
-                break;
-            case KEY_A:
-                //moveHor(mapa, linhas, colunas, &porta, &escada, -1);
-                break;
-            case KEY_D:
-                //moveHor(mapa, linhas, colunas, &porta, &escada, 1);
-                break;
-        }
-
-        BeginDrawing();
-
-        ClearBackground(RAYWHITE);
+    do{
 
         imprime_mapa(mapa, linhas, colunas);
+        printf("Informe movimento ");
+        scanf(" %c", &mov);
 
-        EndDrawing();
-}
-    CloseWindow();
+        switch(mov){
+
+            case 'w':
+                moveVert(mapa, linhas, colunas, &porta, &escada, -1);
+                break;
+            case 's':
+                moveVert(mapa, linhas, colunas, &porta, &escada, 1);
+                break;
+            case 'a':
+                moveHor(mapa, linhas, colunas, &porta, &escada, -1);
+                break;
+            case 'd':
+                moveHor(mapa, linhas, colunas, &porta, &escada, 1);
+                break;
+        }
+    } while(mov != 'q');
+
     return 0;
 }
 
@@ -71,16 +63,16 @@ void carrega_mapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas, char *po
     strcpy(mapa[0], "XXXXXXXXXX");
     strcpy(mapa[1], "X1 C  C2 X");
     strcpy(mapa[2], "XXHX  XX X");
-    strcpy(mapa[3], "XCH    D X");
+    strcpy(mapa[3], "XCH    1 X");
     strcpy(mapa[4], "XXX HXHX X");
     strcpy(mapa[5], "X   H H  X");
     strcpy(mapa[6], "X   H HC2X");
     strcpy(mapa[7], "X HXX XXXX");
-    strcpy(mapa[8], "X H X   PX");
+    strcpy(mapa[8], "XDH X   PX");
     strcpy(mapa[9], "XXXXXXXXXX");
     *linhas = 10;
     *colunas = 10;
-    *porta = '1';
+    *porta = ' ';
     *escada = 0;
 }
 
@@ -89,6 +81,10 @@ void moveVert(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, i
     int jogX, jogY, porX, porY;
 
     localiza_jogador(mapa, linhas, colunas, &jogX, &jogY);
+
+    //se jogador estiver tentando sair do mapa
+    if(jogX + direcao > linhas)
+        return;
 
     if (*porta == ' '){
 
@@ -131,6 +127,65 @@ void moveVert(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, i
 
 }
 
+void moveHor(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, int *escada, int direcao){
+
+    int jogX, jogY;
+    localiza_jogador(mapa, linhas, colunas, &jogX, &jogY);
+
+    //se jogador estiver tentando sair do mapa
+    if (jogY + direcao > colunas || jogY + direcao < 0)
+        return;
+
+    if (mapa[jogX][jogY + direcao] != 'X'){
+
+        //se estava em uma escada ou porta, repoe escada ou porta na matriz
+        if (*escada){
+            mapa[jogX][jogY] = 'H';
+        }
+        else if (*porta != ' '){
+            mapa[jogX][jogY] = *porta;
+            *porta = ' ';
+        }
+        else
+            mapa[jogX][jogY] = ' ';
+
+        //se esta indo para uma porta, atualiza a variavel porta
+        if (isdigit(mapa[jogX][jogY + direcao]))
+            *porta = mapa[jogX][jogY + direcao];
+
+
+        mapa[jogX][jogY + direcao] = 'D';
+
+        *escada = (mapa[jogX - 1][jogY + direcao] == 'H') ? 1 : 0;
+
+        //se o persongem andou para uma posicao sem chao
+        if (mapa[jogX + 1][jogY + direcao] == ' '){
+
+            int blocos = 0;
+            localiza_jogador(mapa, linhas, colunas, &jogX, &jogY);
+
+            while (mapa[jogX + 1][jogY] == ' ' || isdigit(mapa[jogX + 1][jogY])){
+
+                //checa se o jogador vai cair em uma porta
+                if (isdigit(mapa[jogX + 1][jogY]))
+                    *porta = mapa[jogX + 1][jogY];
+
+                //move o jogador para baixo e atualiza a contagem de blocos
+                mapa[jogX + 1][jogY] = 'D';
+                mapa[jogX][jogY] = ' ';
+                blocos++;
+
+                //pra testar se vai cair mais
+                localiza_jogador(mapa, linhas, colunas, &jogX, &jogY);
+
+            }
+
+
+        }
+
+}
+
+}
 
 /*
  * Função que imprime o mapa do jogo na tela
@@ -140,11 +195,26 @@ void moveVert(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char *porta, i
  */
 void imprime_mapa(char mapa[MAPA_L][MAPA_C], int linhas, int colunas) {
 
-    for (int i = 0; i < linhas; i++){
-        int size = MeasureText(mapa[i], 30);
-        size = 400 - size/2;
-        DrawText(mapa[i], size, (i*30)+30, 30, BLACK);
+//    for (int i = 0; i < linhas; i++){
+//        int size = MeasureText(mapa[i], 30);
+//        size = 400 - size;
+//        Vector2 pos;
+//        pos.x = 0;
+//        pos.y = (i*30) + 60;
+//
+//        DrawTextEx(fonte, mapa[i], pos, 30, 5, BLACK);
+//    }
+
+
+     for (int i = 0; i < linhas; i++){
+        for (int j = 0; j < colunas; j++){
+            printf("%c", mapa[i][j]);
+            printf(" ");
+        }
+
+        printf("\n");
     }
+    printf("\n");
 
 }
 
