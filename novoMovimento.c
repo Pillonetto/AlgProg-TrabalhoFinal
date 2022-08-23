@@ -21,6 +21,8 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
         //Se player estiver em escada, atualiza o valor X conforme o movimento desejado
         if (posAtualPlayer == 'H'){
 
+            //ESTADO->ESCADA
+
             player->x += direcao;
 
         }
@@ -31,7 +33,7 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
     else if (isdigit(posAtualPlayer)){
 
         busca_porta(mapa, linhas, colunas, player->x, player->y, &portaX, &portaY);
-
+        
         player->x = portaX;
         player->y = portaY;
 
@@ -49,6 +51,8 @@ void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player,
     if (mapa[player->x][player->y + direcao] == 'X')
         return;
 
+    //ESTADO->ANDANDO
+
     //Atualiza o valor Y conforme movimento desejado
     player->y += direcao;
 
@@ -65,6 +69,8 @@ void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player,
         //Enquanto jogador não estiver sobre escada ou chão
         while (posAbaixo != 'H' && posAbaixo != 'X'){
 
+            //ESTADO->CAINDO
+
             player->x++;
             blocosQueda++;
 
@@ -75,6 +81,8 @@ void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player,
 
         /* Queda de mais de 3 blocos reduz vida.
            Inserir função/variável de controle de vidas quando construída(s) */
+
+        //ESTADO->MORRENDO
 
     }
 
