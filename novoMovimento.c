@@ -27,6 +27,13 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
 
         }
         //Se não estiver em escada, movimento vertical não é permitido
+        
+        /*  A DEFINIR
+        
+        if(posAtualPlayer == 'C')
+            //Interacao com caixa
+            
+        */
 
     }
     
