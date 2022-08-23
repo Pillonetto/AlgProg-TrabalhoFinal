@@ -1,12 +1,12 @@
 #include "controleMatriz.h"
 
 /*
- * Função que carrega o mapa do jogo
+ * Funï¿½ï¿½o que carrega o mapa do jogo
  * @param mapa matriz de caracteres que representa o mapa do jogo
- * @param *linhas ponteiro para inteiro que guardará o número de linhas ocupadas pelo mapa do jogo (parâmetro de saída)
- * @param *colunas ponteiro para inteiro que guardará o número de colunas ocupadas pelo mapa do jogo (parâmetro de saída)
- * @param *porta ponteiro para char que guardará um espaço em branco (' ') caso o jogador não esteja sobre uma porta, ou o identificador da porta, caso o jogador esteja parado sobre uma porta ('1', '2', etc)
- * @param *escada ponteiro para inteiros que indica se o jogador está parado sobre uma escada. Contém o valor 1 caso esteja e 0 caso não esteja
+ * @param *linhas ponteiro para inteiro que guardarï¿½ o nï¿½mero de linhas ocupadas pelo mapa do jogo (parï¿½metro de saï¿½da)
+ * @param *colunas ponteiro para inteiro que guardarï¿½ o nï¿½mero de colunas ocupadas pelo mapa do jogo (parï¿½metro de saï¿½da)
+ * @param *porta ponteiro para char que guardarï¿½ um espaï¿½o em branco (' ') caso o jogador nï¿½o esteja sobre uma porta, ou o identificador da porta, caso o jogador esteja parado sobre uma porta ('1', '2', etc)
+ * @param *escada ponteiro para inteiros que indica se o jogador estï¿½ parado sobre uma escada. Contï¿½m o valor 1 caso esteja e 0 caso nï¿½o esteja
  */
 void carrega_mapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas, char *porta, int *escada) {
     strcpy(mapa[0], "XXXXXXXXXX");
@@ -26,10 +26,10 @@ void carrega_mapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas, char *po
 }
 
 /*
- * Função que imprime o mapa do jogo na tela
+ * Funï¿½ï¿½o que imprime o mapa do jogo na tela
  * @param mapa Mapa do jogo
- * @param linhas número de linhas do mapa
- * @param colunas número de colunas do mapa
+ * @param linhas nï¿½mero de linhas do mapa
+ * @param colunas nï¿½mero de colunas do mapa
  */
 void imprime_mapa(char mapa[MAPA_L][MAPA_C], int linhas, int colunas) {
 
@@ -57,12 +57,12 @@ void imprime_mapa(char mapa[MAPA_L][MAPA_C], int linhas, int colunas) {
 }
 
 /*
- * Função que retorna a localização do jogador no mapa
+ * Funï¿½ï¿½o que retorna a localizaï¿½ï¿½o do jogador no mapa
  * @param mapa Mapa do jogo
- * @param linhas número de linhas do mapa
- * @param colunas número de colunas do mapa
- * @param *x_jog parâmetro de saída, indicando a posição da linha do jogador
- * @param *y_jog parâmetro de saída que indica a posição da coluna em que o jogador se encontra
+ * @param linhas nï¿½mero de linhas do mapa
+ * @param colunas nï¿½mero de colunas do mapa
+ * @param *x_jog parï¿½metro de saï¿½da, indicando a posiï¿½ï¿½o da linha do jogador
+ * @param *y_jog parï¿½metro de saï¿½da que indica a posiï¿½ï¿½o da coluna em que o jogador se encontra
  */
 void localiza_jogador(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int *x_jog, int *y_jog) {
 
@@ -75,22 +75,32 @@ void localiza_jogador(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int *x
 }
 
 /*
- * Função para buscar a localização do par de uma porta no mapa
+ * Funï¿½ï¿½o para buscar a localizaï¿½ï¿½o do par de uma porta no mapa
  * @param mapa Mapa do jogo
- * @param linhas número de linhas do mapa
- * @param colunas número de colunas do mapa
+ * @param linhas nï¿½mero de linhas do mapa
+ * @param colunas nï¿½mero de colunas do mapa
  * @param porta identificador (char) de uma porta
- * @param *x_porta parâmetro de saída, indicando a posição da linha da porta
- * @param *y_porta parâmetro de saída que indica a posição da coluna em que a porta se encontra
+ * @param *x_porta parï¿½metro de saï¿½da, indicando a posiï¿½ï¿½o da linha da porta
+ * @param *y_porta parï¿½metro de saï¿½da que indica a posiï¿½ï¿½o da coluna em que a porta se encontra
  */
-void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, char porta, int *x_porta, int *y_porta) {
+void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int playerX, int playerY, int *x_porta, int *y_porta) {
+
+ /* Como a porta em que se localiza o player nÃ£o Ã© apagada da matriz, os testes 
+    buscam porta de mesmo nÃºmero, mas de posiÃ§Ã£o diferente do parÃ¢metro passado */
+
 
     for (int i = 0; i < linhas; i++){
+
         for (int j = 0; j < colunas; j++){
-            if (mapa[i][j] == porta){
+
+            if ( mapa[i][j] == mapa[playerX][playerY] && (i != playerX && j != playerY) ) {
+
                 *x_porta = i;
                 *y_porta = j;
+
             }
+
         }
+
     }
 }
