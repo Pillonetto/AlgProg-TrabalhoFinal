@@ -1,21 +1,15 @@
 #include "raylib.h"
 
-/* Pega a resolução do monitor e coloca em uma resolução
-no formato 4:3 com 55% do tamanho */
-#define RES_HORIZONT (int)GetMonitorWidth(0)/2 * 1.1
-#define RES_VERTICAL (int)RES_HORIZONT/4 * 3 * 1.1
-
 #define MAPA_L 30  // N MAX de linhas do mapa
 #define MAPA_C 120 // N MAX de colunas do mapa
 
-#define SCALE (float)RES_VERTICAL/180 // Escala dos assets do jogo
-#define SCALE_TILES SCALE*0.70 // Escala dos tiles na tela
+// Macro para a escala dos objetos na tela
+#define SCALE Scale(render.texture.height)
 
 // CONSTANTES MENU -----------------------------
 #define N_OPCOES 4 // Número de opções no menu principal
-#define TAM_FONTE RES_VERTICAL/15 // Tamanho (vertical) da fonte
+#define TAM_FONTE 50 // Tamanho (vertical) da fonte
 #define N_BG 3 // Número de imagens de fundo
-#define TAM_V_FUNDO RES_VERTICAL/bg[0].textura.height // Tamanho vertical do fundo
 
 // TELAS ---------------------------------------
 #define FECHAR -1
@@ -29,10 +23,6 @@ Determinam se a posição em questão está ocupada (caso não esteja fora dos limite
 #define BAIXO (mapa[l+1][c]=='X' && l+1 != lMax)
 #define DIR   (mapa[l][c+1]=='X' && c+1 != cMax)
 #define ESQ   (mapa[l][c-1]=='X' && c-1 != -1)
-
-// Tamanho dos tiles e bordas na tela
-#define TAM_TILES (tileset.width * SCALE_TILES) // Tamanho real de cada tile na tela
-#define TAM_BORDAS (RES_HORIZONT - (c*TAM_TILES))/2 // Tamanho das bordas laterais do jogo
 
 // MACROS ESTADO PLAYER
 #define IDLE     0
@@ -55,8 +45,8 @@ typedef struct {
 
 typedef struct {
     Texture2D textura;
-    int x; // Posição horizontal do background na tela
-    int y; // Posição vertical do background na tela
+    float x; // Posição horizontal do background na tela
+    float y; // Posição vertical do background na tela
 } Background;
 
 typedef struct {

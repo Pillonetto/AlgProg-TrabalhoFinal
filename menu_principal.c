@@ -21,16 +21,16 @@ void AtualizaMenu(Font fonteMenu, int *opc) {
     }
 }
 
-void DesenhaMenu(Font fonte, int selecionada, Rectangle *select) {
+void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle *select) {
     char textoMenu[N_OPCOES][20] = {"Novo Jogo", "Carregar Jogo", "Ranking", "Sair"};
     int i;
     Vector2 textoPos;
 
     for (i = 0; i < N_OPCOES; i++) {
         // Alinha o texto horizontalmente ao centro da tela
-        textoPos.x = (RES_HORIZONT - MeasureTextEx(fonte, textoMenu[i], TAM_FONTE, 0).x) / 2;
+        textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoMenu[i], TAM_FONTE, 0).x) / 2;
         // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaçamento
-        textoPos.y = RES_VERTICAL/2 + (i*TAM_FONTE*1.5);
+        textoPos.y = GetScreenHeight()/2 + (i*(TAM_FONTE*1.5));
 
         // Desenha e anima um retângulo em cima da opção selecionada
         if (i == selecionada)
@@ -40,14 +40,14 @@ void DesenhaMenu(Font fonte, int selecionada, Rectangle *select) {
             if (select->y != textoPos.y)
                 select->y += (textoPos.y - select->y)/3;
 
-            DrawRectangleRec(*select, Fade(BLACK, 0.5));
+            DrawRectangleRec(*select, Fade(BLACK, 0.65));
         }
         // Desenha as opções
-        DrawTextEx(fonte, textoMenu[i], textoPos, TAM_FONTE, 0, WHITE);
+        DrawTextEx(fonte, textoMenu[i], textoPos, TAM_FONTE, 1, WHITE);
     }
 }
 
-void MenuPrincipal(Font fonteMenu, int *opc, int *telaAtual, Rectangle *select) {
+void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select) {
 
     AtualizaMenu(fonteMenu, opc);
 
@@ -66,8 +66,6 @@ void MenuPrincipal(Font fonteMenu, int *opc, int *telaAtual, Rectangle *select) 
         }
     }
 
-    BeginDrawing();
-        ClearBackground(BLACK);
-        DesenhaMenu(fonteMenu, *opc, select);
-    EndDrawing();
+    ClearBackground(BLACK);
+    DesenhaMenu(render, fonteMenu, *opc, select);
 }

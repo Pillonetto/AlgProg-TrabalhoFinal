@@ -1,4 +1,5 @@
 #include "definicoes.h"
+#include <math.h>
 
 // Determina se o player está em cima de uma porta
 bool PlayerEmPorta(Player *player, char mapa[MAPA_L][MAPA_C]) {
@@ -8,31 +9,32 @@ bool PlayerEmPorta(Player *player, char mapa[MAPA_L][MAPA_C]) {
 /* Controla a posição e estado de animação do render com base na distância entre o render
 e a posição do player na matriz */
 void AnimaPlayerPos(Player *player, Sprite tileset, char mapa[MAPA_L][MAPA_C], int c) {
-    float posRenderX = (player->render.x-TAM_BORDAS)/TAM_TILES;
-    float posRenderY = player->render.y/TAM_TILES;
+    int playerX = player->x * tileset.width;
+    int playerY = player->y * tileset.height;
 
     /* Teleporte para portas ----------------------------------
     Teleporta o render caso o player esteja em uma porta e a distância entre o
-    render e o player seja maior que 1.5 tiles */
-    if ((fabs(posRenderX-player->x) > 1.5 || fabs(posRenderY-player->y) > 1.5)
+    render e o player seja maior que 1 tile */
+    if ((fabs(player->render.x - playerX) > tileset.width
+        || fabs(player->render.y - playerY) > tileset.width)
         && PlayerEmPorta(player, mapa)) {
-        player->render.x = (player->x * TAM_TILES) + TAM_BORDAS;
-        player->render.y = (player->y * TAM_TILES);
+        player->render.x = playerX;
+        player->render.y = playerY;
     }
 
     // Movimentação horizontal --------------------------------
     // Tolerância de 0.05
-    if (fabs(posRenderX-player->x) > 0.05)
+    if (player->render.x != playerX)
     {
         // Andando para a esquerda
-        if (posRenderX > player->x) {
-                player->render.x -= 3;
+        if (player->render.x > playerX) {
+                player->render.x -= 1;
                 player->estado = ANDANDO;
                 player->direcao = P_ESQUERDA;
         }
         // Andando para a direita
-        else if (posRenderX < player->x) {
-                player->render.x += 3;
+        else if (player->render.x < playerX) {
+                player->render.x += 1;
                 player->estado = ANDANDO;
                 player->direcao = P_DIREITA;
         }
@@ -40,23 +42,23 @@ void AnimaPlayerPos(Player *player, Sprite tileset, char mapa[MAPA_L][MAPA_C], i
 
     // Movimentação vertical ----------------------------------
     // Tolerância de 0.05
-    else if (fabs(posRenderY-player->y) > 0.05)
+    else if (fabs(player->render.y - playerY) > 0.05)
     {
         // Escada para cima
-        if (posRenderY > player->y) {
-            player->render.y -= 2;
+        if (player->render.y > playerY) {
+            player->render.y -= 1;
             player->estado = ESCADA;
         }
         /* Escada para baixo
         Se desloca pela escada se o player estiver em uma escada e a dist. entre o render
         e o player for menor ou igual a 1 tile */
-        else if (mapa[player->y][player->x] == 'H' && fabs(posRenderY-player->y) <= 1) {
-            player->render.y += 2;
+        else if (mapa[player->y][player->x] == 'H' && fabs(player->render.y - playerY) <= tileset.height) {
+            player->render.y += 1;
             player->estado = ESCADA;
         }
         // Caindo (WIP)
         else {
-            player->render.y += 6;
+            player->render.y += 3;
             player->estado = CAINDO;
         }
     }
@@ -87,7 +89,7 @@ void DesenhaPlayer(Player *player, int frames) {
             AnimaPlayerSprite(player, frames, 5, 7);
             break;
         case ANDANDO:
-            AnimaPlayerSprite(player, frames, 8, 7);
+            AnimaPlayerSprite(player, frames, 8, 6);
             break;
         case ESCADA:
             AnimaPlayerSprite(player, frames, 6, 5);

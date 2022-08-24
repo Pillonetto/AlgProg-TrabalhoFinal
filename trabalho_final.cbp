@@ -43,6 +43,9 @@
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -50,6 +53,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="render_jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="render_player.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
