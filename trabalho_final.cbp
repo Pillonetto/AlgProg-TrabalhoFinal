@@ -39,6 +39,9 @@
 			<Add library="winmm" />
 			<Add library="pthread" />
 		</Linker>
+		<Unit filename="barra_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="definicoes.h" />
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />

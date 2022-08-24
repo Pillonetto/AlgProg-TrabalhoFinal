@@ -1,4 +1,5 @@
 #include "definicoes.h"
+#include <ctype.h>
 
 void DesenhaPlayer(Player *player, int frames);
 
@@ -8,7 +9,7 @@ Rectangle Tile(int x, int y) {
 }
 
 // Define a posição do retângulo de sourcing dentro do tileset
-Rectangle DefineTile(Sprite tileset, char mapa[MAPA_L][MAPA_C], int l, int c, int lMax, int cMax) {
+Rectangle DefineTile(char mapa[MAPA_L][MAPA_C], int l, int c, int lMax, int cMax) {
     Rectangle tile;
 
     if (mapa[l][c] == 'H')              // ESCADA
@@ -39,32 +40,45 @@ Rectangle DefineTile(Sprite tileset, char mapa[MAPA_L][MAPA_C], int l, int c, in
     }
 
     // Dimensões do retângulo de sourcing
-    tile.width = tileset.width;
-    tile.height = tileset.height;
-    tile.x *= tileset.width;
-    tile.y *= tileset.height;
+    tile.width = TAM_TILES;
+    tile.height = TAM_TILES;
+    tile.x *= TAM_TILES;
+    tile.y *= TAM_TILES;
     return tile;
 }
 
+void DesenhaNumPorta(char num, int x, int y) {
+    DrawText(TextFormat("%c", num), x*TAM_TILES+TAM_TILES/2, y*TAM_TILES, 1, RAYWHITE);
+}
+
 // Desenha o mapa do jogo na tela
-void DesenhaTiles(char mapa[MAPA_L][MAPA_C], Sprite tileset, int l, int c) {
+void DesenhaTiles(char mapa[MAPA_L][MAPA_C], Texture2D tileset, int l, int c) {
     Rectangle tileSource; // Representa o tile dentro da textura
     Vector2 tilePos; // Representa a posição do tile na tela
     int i, j;
 
     for (i = 0; i < l; i++) {
-        tilePos.y = i * tileset.height; // Pos vertical
+        tilePos.y = i * TAM_TILES; // Pos vertical
         for (j = 0; j < c; j++) {
-            tilePos.x = j * tileset.width; // Pos horizontal
+            tilePos.x = j * TAM_TILES; // Pos horizontal
             if (mapa[i][j] != ' ') {
-                tileSource = DefineTile(tileset, mapa, i, j, l, c);
-                DrawTextureRec(tileset.textura, tileSource, tilePos, WHITE);
+                tileSource = DefineTile(mapa, i, j, l, c);
+                DrawTextureRec(tileset, tileSource, tilePos, WHITE);
+                if (isdigit(mapa[i][j]) > 0)
+                    DesenhaNumPorta(mapa[i][j], j, i);
             }
         }
     }
 }
 
-void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Sprite tileset, Player *player, int frames) {
+void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames) {
+        // Bordas laterais
+        int alturaTela = TAM_TILES*l;
+        int larguraTela = TAM_TILES*c;
+        int larguraBorda = TAM_TILES/2;
+        DrawRectangle(0, 0, larguraBorda, alturaTela, BLACK);
+        DrawRectangle(larguraTela - larguraBorda, 0, larguraBorda, alturaTela, BLACK);
+
         DesenhaTiles(mapa, tileset, l, c);
         DesenhaPlayer(player, frames);
 }

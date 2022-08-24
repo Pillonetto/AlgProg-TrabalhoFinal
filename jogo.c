@@ -1,29 +1,28 @@
 #include "definicoes.h"
+#include "controleMatriz.h"
 
-void AnimaPlayerPos(Player *player, Sprite tileset, char mapa[MAPA_L][MAPA_C], int c);
-void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Sprite tileset, Player *player, int frames);
+void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C], int c);
+void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
+void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Player *player, int direcao);
+void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player, int direcao);
 
-void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Sprite tileset, Player *player, int frames) {
+void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames) {
 
     if (player->estado == IDLE)
     {
         // funções de movimentação aqui:
         if (IsKeyPressed(KEY_LEFT))
-            player->x--;
+            MovimentoHorizontal(mapa, c, player, -1);
         if (IsKeyPressed(KEY_RIGHT))
-            player->x++;
+            MovimentoHorizontal(mapa, c, player, +1);
         if (IsKeyPressed(KEY_UP))
-            player->y--;
+            MovimentoVertical(mapa, l, c, player, +1);
         if (IsKeyPressed(KEY_DOWN))
-            player->y++;
-        if (IsKeyPressed(KEY_P)) { // DEBUG: Teleporte porta (sem animação ainda)
-            player->y = 3;
-            player->x = 7;
-        }
+            MovimentoVertical(mapa, l, c, player, -1);
         if (IsKeyPressed(KEY_C)) // DEBUG: Cair
             player->y = 8;
     }
 
-    AnimaPlayerPos(player, tileset, mapa, c);
+    AnimaPlayerPos(player, mapa, c);
     RenderJogo(mapa, l, c, tileset, player, frames);
 }

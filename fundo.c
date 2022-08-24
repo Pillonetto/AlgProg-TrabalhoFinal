@@ -6,8 +6,7 @@ void DesenhaFundoMenu(Background bg[N_BG], int frames) {
     for (i = 0; i < N_BG; i++) {
         /* ANIMAÇÃO VERTICAL DO FUNDO -------------
         Enquanto a origem do fundo estiver acima (val menor) da origem da tela, aumenta a pos y
-        do fundo em um valor 100x menor que a distância entre a origem da tela e a origem do fundo,
-        com um coeficiente relacionado ao índice do fundo */
+        do fundo em um valor de forma que as três camadas cheguem em 0 ao mesmo tempo */
         if (bg[i].y < 0)
             bg[i].y -= (float)-bg[i].textura.height/(i+2) / 250;
 

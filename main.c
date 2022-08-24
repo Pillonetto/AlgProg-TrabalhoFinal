@@ -3,12 +3,13 @@
 
 void CarregaMapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas);
 void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select);
-void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Sprite tileset, Player *player, int frames);
+void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
 void DesenhaFundoMenu(Background bg[N_BG], int frames);
 void DesenhaFundoJogo(Background bg[N_BG], int alturaMapa, Player player);
 void ContaFrames(int *frames);
 void RedimensionarJanela(Rectangle render);
 float Scale(float alturaRender);
+void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura);
 
 int main() {
 
@@ -25,7 +26,7 @@ int main() {
     int l, c;
 
     // Variáveis de controle
-    int telaAtual = MENU;
+    int telaAtual = JOGO;
     int frames = 0; // Utilizada em animações
     int opc = -1; // Opção do menu principal selecionada (inic. sem seleção)
     Rectangle select; // Controla o botão de select do menu principal
@@ -38,12 +39,8 @@ int main() {
 
     // RESOURCES -----------------------------------------------------
 
-    /* Tileset usado nos mapas, contendo a textura, a altura de cada
-    tile e a largura de cada tile */
-    Sprite tileset;
-    tileset.textura = LoadTexture("resources/oak_woods_tileset.png");
-    tileset.width = tileset.textura.width/23;
-    tileset.height = tileset.textura.height/15;
+    // Tileset usado nos mapas
+    Texture2D tileset = LoadTexture("resources/oak_woods_tileset.png");
     /* Sprites usados pelo player */
     player.textura = LoadTexture("resources/player_sprite.png");
     player.spriteAtual.width = player.textura.width/8;
@@ -52,6 +49,8 @@ int main() {
     player.spriteAtual.y = 0;
     /* Fonte usada no menu */
     Font fonteMenu = LoadFontEx("resources/alagard.ttf", TAM_FONTE, 0, 250);
+    /* Coração usado na barra do jogo */
+    Texture2D vidaTextura = LoadTexture("resources/life_points.png");
 
     /* Fundo do jogo, contendo a textura de cada camada e suas posições */
     Background bg[N_BG];
@@ -69,6 +68,7 @@ int main() {
     select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
                          .height = TAM_FONTE,
                          .width = render.texture.width*SCALE};
+
 
     // LOOP DO JOGO --------------------------------------------------
     while (!WindowShouldClose() && !fecharJogo)
@@ -92,23 +92,23 @@ int main() {
                         bg[i].x = -bg[i].textura.width/2;
                         bg[i].y = 0;
                     }
-                    player.render = (Rectangle){.width = tileset.width,
-                                                .height = tileset.height,
-                                                .x = (player.x * tileset.width),
-                                                .y = (player.y * tileset.height)};
+                    player.render = (Rectangle){.width = TAM_TILES,
+                                                .height = TAM_TILES,
+                                                .x = (player.x * TAM_TILES),
+                                                .y = (player.y * TAM_TILES)};
                     player.x = 1;
                     player.y = 1;
-                    player.render.x = player.x * tileset.width;
-                    player.render.y = player.y * tileset.height;
+                    player.render.x = player.x * TAM_TILES;
+                    player.render.y = player.y * TAM_TILES;
                     UnloadRenderTexture(render);
-                    render = LoadRenderTexture(tileset.width*c, tileset.height*l);
+                    render = LoadRenderTexture(TAM_TILES*c, TAM_TILES*l + TAM_BARRA);
                     renderDest.width = render.texture.width*SCALE;
                     renderDest.height = render.texture.height*SCALE;
                     renderSource.width = render.texture.width;
                     renderSource.height = -render.texture.height;
                     jogoInit = true;
                 }
-                DesenhaFundoJogo(bg, tileset.width*l, player);
+                DesenhaFundoJogo(bg, TAM_TILES*l, player);
                 Jogo(mapa, l, c, tileset, &player, frames);
                 break;
 
@@ -133,6 +133,10 @@ int main() {
                 case MENU:
                     MenuPrincipal(render, fonteMenu, &opc, &telaAtual, &select);
                     break;
+
+                case JOGO:
+                    BarraInformacoes(TAM_TILES*l*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura);
+                    break;
             }
 
 
@@ -145,7 +149,7 @@ int main() {
 
     // Unloading de resources
     UnloadFont(fonteMenu);
-    UnloadTexture(tileset.textura);
+    UnloadTexture(tileset);
     for (i = 0; i < N_BG; i++)
         UnloadTexture(bg[i].textura);
     UnloadTexture(player.textura);
@@ -170,7 +174,7 @@ void ContaFrames(int *frames) {
 float Scale(float alturaRender) {
     /* Retorna o coeficiente que aumenta a altura da tela para
     2/3 da altura da resolução utilizada pelo monitor */
-    return 2 * GetMonitorHeight(0) / (3 * alturaRender);
+    return 3 * GetMonitorHeight(0) / (4 * alturaRender);
 }
 
 void CarregaMapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas) {

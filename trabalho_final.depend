@@ -1,31 +1,51 @@
 # depslib dependency file v1.0
-1661299520 source:d:\trabalhofinal\trabalho_final\main.c
+1661365086 source:d:\trabalhofinal\trabalho_final\main.c
 	<string.h>
 	"definicoes.h"
 
-1661294501 source:d:\trabalhofinal\trabalho_final\menu_principal.c
+1661362265 source:d:\trabalhofinal\trabalho_final\menu_principal.c
 	"definicoes.h"
 
-1661294862 d:\trabalhofinal\trabalho_final\definicoes.h
+1661362265 d:\trabalhofinal\trabalho_final\definicoes.h
 	"raylib.h"
 
 1660762897 d:\trabalhofinal\trabalho_final\menu_principal.c
 	"raylib.h"
 	"definicoes.h"
 
-1661295684 source:d:\trabalhofinal\trabalho_final\render_jogo.c
+1661362631 source:d:\trabalhofinal\trabalho_final\render_jogo.c
 	"definicoes.h"
+	<ctype.h>
 
 1660775814 source:d:\trabalhofinal\trabalho_final\carrega_mapa.c
 	<stdio.h>
 
-1661299508 source:d:\trabalhofinal\trabalho_final\fundo.c
+1661304457 source:d:\trabalhofinal\trabalho_final\fundo.c
 	"definicoes.h"
 
-1661296072 source:d:\trabalhofinal\trabalho_final\render_player.c
+1661362616 source:d:\trabalhofinal\trabalho_final\render_player.c
 	"definicoes.h"
 	<math.h>
+	<ctype.h>
 
-1661120643 source:d:\trabalhofinal\trabalho_final\jogo.c
+1661362783 source:d:\trabalhofinal\trabalho_final\jogo.c
 	"definicoes.h"
+	"controleMatriz.h"
+
+1661366396 source:d:\trabalhofinal\trabalho_final\barra_info.c
+	"definicoes.h"
+
+1661363041 source:d:\trabalhofinal\trabalho_final\novomovimento.c
+	"controleMatriz.h"
+	"definicoes.h"
+
+1661352300 d:\trabalhofinal\trabalho_final\controlematriz.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+
+1661352300 source:d:\trabalhofinal\trabalho_final\controlematriz.c
+	"controleMatriz.h"
 

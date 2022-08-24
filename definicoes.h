@@ -6,10 +6,14 @@
 // Macro para a escala dos objetos na tela
 #define SCALE Scale(render.texture.height)
 
+// Tamanho dos tiles em pixels
+#define TAM_TILES 24
+
 // CONSTANTES MENU -----------------------------
 #define N_OPCOES 4 // Número de opções no menu principal
 #define TAM_FONTE 50 // Tamanho (vertical) da fonte
 #define N_BG 3 // Número de imagens de fundo
+#define TAM_BARRA 10 // Tamanho vertical da barra de informações
 
 // TELAS ---------------------------------------
 #define FECHAR -1
@@ -39,12 +43,6 @@ Determinam se a posição em questão está ocupada (caso não esteja fora dos limite
 // ESTRUTURAS ----------------------------------
 typedef struct {
     Texture2D textura;
-    int width; // Largura de cada sprite na textura
-    int height; // Altura de cada sprite na textura
-} Sprite;
-
-typedef struct {
-    Texture2D textura;
     float x; // Posição horizontal do background na tela
     float y; // Posição vertical do background na tela
 } Background;
@@ -56,5 +54,5 @@ typedef struct {
     int estado; // Estado do player (idle, andando, caindo, etc)
     int direcao; // Direcao que o player está olhando (+1: direita, -1: esquerda)
     Rectangle spriteAtual; // Corresponde ao sprite sendo usado atualmente (source para o DrawTexturePro)
-    Rectangle render; // Retângulo que representa o player na tela do jogo (destination para o DrawTexturePro)
+    Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
