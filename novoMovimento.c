@@ -4,7 +4,7 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
 
     //Localização do player e portas na matriz mapa
     char posAtualPlayer = mapa[player->x][player->y];
-    int portaX, portaY;
+    int portaX, portaY, item;
     
     //Impede o jogador de sair dos limites do mapa
     if(player->x + direcao > linhas || player->x + direcao < 0)
@@ -26,15 +26,8 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
             player->x += direcao;
 
         }
-        //Se não estiver em escada, movimento vertical não é permitido
-        
-        /*  A DEFINIR
-        
-        if(posAtualPlayer == 'C')
-            //Interacao com caixa
+        //Se não estiver em escada, movimento vertical não é permitido 
             
-        */
-
     }
     
     else if (isdigit(posAtualPlayer)){
