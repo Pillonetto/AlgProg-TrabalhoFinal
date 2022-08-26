@@ -1,41 +1,69 @@
-#include "controleMatriz.h"
+#include "definicoes.h"
+
+void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C], int c);
+void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
+void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Player *player, int direcao);
+void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player, int direcao);
+void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int playerX, int playerY, int *x_porta, int *y_porta);
+
+void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames) {
+
+    if (player->estado == IDLE)
+    {
+        // funções de movimentação aqui:
+        if (IsKeyPressed(KEY_LEFT))
+            MovimentoHorizontal(mapa, c, player, -1);
+        if (IsKeyPressed(KEY_RIGHT))
+            MovimentoHorizontal(mapa, c, player, +1);
+        if (IsKeyPressed(KEY_UP))
+            MovimentoVertical(mapa, l, c, player, -1);
+        if (IsKeyPressed(KEY_DOWN))
+            MovimentoVertical(mapa, l, c, player, +1);
+        if (IsKeyPressed(KEY_C)) // DEBUG: Cair
+            player->y = 8;
+    }
+
+    AnimaPlayerPos(player, mapa, c);
+    RenderJogo(mapa, l, c, tileset, player, frames);
+}
 
 void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Player *player, int direcao){
 
-    //Localização do player e portas na matriz mapa
-    char posAtualPlayer = mapa[player->x][player->y];
-    int portaX, portaY, item;
-    
-    //Impede o jogador de sair dos limites do mapa
-    if(player->x + direcao > linhas || player->x + direcao < 0)
-        return;
+    //Localizacao do player e portas na matriz mapa
+    char posAtualPlayer = mapa[player->y][player->x];
+    int portaX, portaY;
 
-    //Impede o jogador de andar sobre paredes
-    if (mapa[player->x + direcao][player->y] == 'X')
-        return;
+    //Player esta em porta?
+    if (isdigit(posAtualPlayer)){
+        busca_porta(mapa, linhas, colunas, player->y, player->x, &portaY, &portaX);
 
-    //Player está em porta?
-
-    if (isalpha(posAtualPlayer)){
-
-        //Se player estiver em escada, atualiza o valor X conforme o movimento desejado
-        if (posAtualPlayer == 'H'){
-
-            //ESTADO->ESCADA
-
-            player->x += direcao;
-
-        }
-        //Se não estiver em escada, movimento vertical não é permitido 
-            
-    }
-    
-    else if (isdigit(posAtualPlayer)){
-
-        busca_porta(mapa, linhas, colunas, player->x, player->y, &portaX, &portaY);
-        
         player->x = portaX;
         player->y = portaY;
+        player->render.x = portaX*24;
+        player->render.y = portaY*24;
+
+    }
+    else {
+
+        //Impede o jogador de andar por paredes
+        if (mapa[player->y + direcao][player->x] == 'X')
+            return;
+
+        //Se player estiver em escada ou em cima de escada, atualiza o valor X conforme o movimento desejado
+        if (posAtualPlayer == 'H' || mapa[player->y+direcao][player->x] == 'H'){
+
+            //ESTADO->ESCADA
+            player->y += direcao;
+
+        }
+        //Se nao estiver em escada, movimento vertical nao e permitido
+
+        /*  A DEFINIR
+
+        if(posAtualPlayer == 'C')
+            //Interacao com caixa
+
+        */
 
     }
 
@@ -44,47 +72,69 @@ void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Playe
 void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player, int direcao){
 
     //Impede o jogador de sair dos limites do mapa
-    if (player->y + direcao > colunas || player->y + direcao < 0)
+    if (player->x + direcao > colunas || player->x + direcao < 0)
         return;
 
     //Impede o jogador de andar sobre paredes
-    if (mapa[player->x][player->y + direcao] == 'X')
+    if (mapa[player->y][player->x + direcao] == 'X')
         return;
 
     //ESTADO->ANDANDO
 
     //Atualiza o valor Y conforme movimento desejado
-    player->y += direcao;
+    player->x += direcao;
 
-    //Char da matriz abaixo da posição atual do player
-    char posAbaixo = mapa[player->x + 1][player->y];
+    //Char da matriz abaixo da posicao atual do player
+    char posAbaixo = mapa[player->y + 1][player->x];
 
-    //Player andou para posição sem chão?
+    //Player andou para posicao sem chao?
 
     if (posAbaixo == ' '){
 
-        //Variável de contagem da altura da queda
+        //Variavel de contagem da altura da queda
         int blocosQueda = 0;
-        
-        //Enquanto jogador não estiver sobre escada ou chão
+
+        //Enquanto jogador nao estiver sobre escada ou chao
         while (posAbaixo != 'H' && posAbaixo != 'X'){
 
             //ESTADO->CAINDO
 
-            player->x++;
+            player->y++;
             blocosQueda++;
 
-            //Para continuar realizando teste da posição abaixo
-            posAbaixo = mapa[player->x + 1][player->y];
+            //Para continuar realizando teste da posicao abaixo
+            posAbaixo = mapa[player->y + 1][player->x];
 
         }
 
         /* Queda de mais de 3 blocos reduz vida.
-           Inserir função/variável de controle de vidas quando construída(s) */
+           Inserir funcao/variavel de controle de vidas quando construida(s) */
 
         //ESTADO->MORRENDO
 
     }
 
+}
+
+void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int playerX, int playerY, int *x_porta, int *y_porta) {
+
+ /* Como a porta em que se localiza o player nao eh apagada da matriz, os testes
+    buscam porta de mesmo numero, mas de posicao diferente do parametro passado */
+
+
+    for (int i = 0; i < linhas; i++){
+
+        for (int j = 0; j < colunas; j++){
+
+            if ( mapa[i][j] == mapa[playerX][playerY] && (i != playerX && j != playerY) ) {
+
+                *x_porta = i;
+                *y_porta = j;
+
+            }
+
+        }
+
+    }
 }
 
