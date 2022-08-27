@@ -1,4 +1,5 @@
-#include "definicoes.h"
+#include "raylib.h"
+#include "menu_principal.h"
 
 void AtualizaMenu(Font fonteMenu, int *opc) {
     // Se uma das setas verticais for pressionada com o menu "zerado", coloca a opcão em 0
@@ -40,7 +41,7 @@ void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
             if (select->y != textoPos.y)
                 select->y += (textoPos.y - select->y)/3;
 
-            DrawRectangleRec(*select, Fade(BLACK, 0.65));
+            DrawRectangleRec(*select, Fade(BLACK, 0.45));
         }
         // Desenha as opções
         DrawTextEx(fonte, textoMenu[i], textoPos, TAM_FONTE, 1, WHITE);

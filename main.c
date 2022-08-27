@@ -1,15 +1,18 @@
 #include <string.h>
-#include "definicoes.h"
+#include "raylib.h"
+#include "barra_info.h"
+#include "fundo.h"
+#include "jogo.h"
+#include "menu_principal.h"
+#include "render_jogo.h"
+#include "mapa.h"
 
-void CarregaMapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas);
-void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select);
-void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
-void DesenhaFundoMenu(Background bg[N_BG], int frames);
-void DesenhaFundoJogo(Background bg[N_BG], int alturaMapa, Player player);
-void ContaFrames(int *frames);
+// Macro para a escala dos objetos na tela
+#define SCALE Scale(render.texture.height)
+
 void RedimensionarJanela(Rectangle render);
+void ContaFrames(int *frames);
 float Scale(float alturaRender);
-void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura);
 
 int main() {
 
@@ -26,7 +29,7 @@ int main() {
     int l, c;
 
     // Variáveis de controle
-    int telaAtual = JOGO;
+    int telaAtual = MENU;
     int frames = 0; // Utilizada em animações
     int opc = -1; // Opção do menu principal selecionada (inic. sem seleção)
     Rectangle select; // Controla o botão de select do menu principal
@@ -85,6 +88,7 @@ int main() {
             case JOGO:
                 /* Inicialização do jogo
                 Organizar em funções após criar o sistema de níveis */
+                if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
                 if (!jogoInit)
                 {
                     CarregaMapa(mapa, &l, &c);
@@ -175,19 +179,4 @@ float Scale(float alturaRender) {
     /* Retorna o coeficiente que aumenta a altura da tela para
     2/3 da altura da resolução utilizada pelo monitor */
     return 3 * GetMonitorHeight(0) / (4 * alturaRender);
-}
-
-void CarregaMapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas) {
-    strcpy(mapa[0], "XXXXXXXXXXX");
-    strcpy(mapa[1], "X1 C  C2  X");
-    strcpy(mapa[2], "XXHX  XX  X");
-    strcpy(mapa[3], "XCH    1  X");
-    strcpy(mapa[4], "XXX HXHX XX");
-    strcpy(mapa[5], "X   H H   X");
-    strcpy(mapa[6], "X   H HC2 X");
-    strcpy(mapa[7], "X HXX XXXXX");
-    strcpy(mapa[8], "X H X    PX");
-    strcpy(mapa[9], "XXXXXXXXXXX");
-    *linhas = 10;
-    *colunas = 11;
 }

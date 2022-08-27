@@ -42,6 +42,10 @@
 		<Unit filename="barra_info.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="controleMatriz.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="controleMatriz.h" />
 		<Unit filename="definicoes.h" />
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />
@@ -53,6 +57,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu_principal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="novoMovimento.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="render_jogo.c">

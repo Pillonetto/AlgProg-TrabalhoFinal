@@ -1,4 +1,5 @@
-#include "definicoes.h"
+#include "raylib.h"
+#include "fundo.h"
 
 // Fundo no menu: movimenta-se para a esquerda e volta à origem quando alcança o fim da tela
 void DesenhaFundoMenu(Background bg[N_BG], int frames) {

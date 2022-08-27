@@ -1,7 +1,5 @@
-#include "definicoes.h"
-#include <ctype.h>
-
-void DesenhaPlayer(Player *player, int frames);
+#include "raylib.h"
+#include "render_jogo.h"
 
 // Facilita a escolha de tiles para o retângulo source
 Rectangle Tile(int x, int y) {

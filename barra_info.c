@@ -1,4 +1,5 @@
-#include "definicoes.h"
+#include "raylib.h"
+#include "barra_info.h"
 
 /* * * WIP * * */
 void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura) {

@@ -1,10 +1,17 @@
 # depslib dependency file v1.0
-1661365086 source:d:\trabalhofinal\trabalho_final\main.c
+1661613385 source:d:\trabalhofinal\trabalho_final\main.c
 	<string.h>
-	"definicoes.h"
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"jogo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
 
-1661362265 source:d:\trabalhofinal\trabalho_final\menu_principal.c
-	"definicoes.h"
+1661613483 source:d:\trabalhofinal\trabalho_final\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
 
 1661362265 d:\trabalhofinal\trabalho_final\definicoes.h
 	"raylib.h"
@@ -13,27 +20,33 @@
 	"raylib.h"
 	"definicoes.h"
 
-1661362631 source:d:\trabalhofinal\trabalho_final\render_jogo.c
-	"definicoes.h"
-	<ctype.h>
+1661613580 source:d:\trabalhofinal\trabalho_final\render_jogo.c
+	"raylib.h"
+	"render_jogo.h"
 
 1660775814 source:d:\trabalhofinal\trabalho_final\carrega_mapa.c
 	<stdio.h>
 
-1661304457 source:d:\trabalhofinal\trabalho_final\fundo.c
-	"definicoes.h"
+1661612017 source:d:\trabalhofinal\trabalho_final\fundo.c
+	"raylib.h"
+	"fundo.h"
 
-1661362616 source:d:\trabalhofinal\trabalho_final\render_player.c
-	"definicoes.h"
+1661613590 source:d:\trabalhofinal\trabalho_final\render_player.c
 	<math.h>
 	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
 
-1661362783 source:d:\trabalhofinal\trabalho_final\jogo.c
-	"definicoes.h"
-	"controleMatriz.h"
+1661613589 source:d:\trabalhofinal\trabalho_final\jogo.c
+	"raylib.h"
+	"jogo.h"
+	"render_player.h"
 
-1661366396 source:d:\trabalhofinal\trabalho_final\barra_info.c
-	"definicoes.h"
+1661612037 source:d:\trabalhofinal\trabalho_final\barra_info.c
+	"raylib.h"
+	"barra_info.h"
 
 1661363041 source:d:\trabalhofinal\trabalho_final\novomovimento.c
 	"controleMatriz.h"
@@ -48,4 +61,26 @@
 
 1661352300 source:d:\trabalhofinal\trabalho_final\controlematriz.c
 	"controleMatriz.h"
+
+1661612794 d:\trabalhofinal\trabalho_final\barra_info.h
+
+1661613186 source:d:\trabalhofinal\trabalho_final\mapa.c
+	"mapa.h"
+
+1661613228 d:\trabalhofinal\trabalho_final\mapa.h
+
+1661613346 d:\trabalhofinal\trabalho_final\fundo.h
+	"jogo.h"
+
+1661613360 d:\trabalhofinal\trabalho_final\jogo.h
+	"mapa.h"
+
+1661613437 d:\trabalhofinal\trabalho_final\render_player.h
+	"jogo.h"
+
+1661613383 d:\trabalhofinal\trabalho_final\menu_principal.h
+
+1661613401 d:\trabalhofinal\trabalho_final\render_jogo.h
+	"mapa.h"
+	"jogo.h"
 

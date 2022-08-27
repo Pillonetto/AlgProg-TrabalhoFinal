@@ -1,28 +1,15 @@
-#include "definicoes.h"
 #include <math.h>
 #include <ctype.h>
-
-bool TeleportePorta(Player player, char mapa[MAPA_L][MAPA_C]) {
-    bool playerEmPorta = (isdigit(mapa[player.y][player.x]) > 0);
-    float distanciaX = fabs(player.render.x/TAM_TILES - player.x);
-    float distanciaY = fabs(player.render.y/TAM_TILES - player.y);
-
-    return (playerEmPorta && (distanciaX > 1 || distanciaY > 1));
-}
+#include "raylib.h"
+#include "render_player.h"
+#include "render_jogo.h"
+#include "jogo.h"
 
 /* Controla a posição e estado de animação do render com base na distância entre o render
 e a posição do player na matriz */
 void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C], int c) {
     int playerX = player->x * TAM_TILES;
     int playerY = player->y * TAM_TILES;
-
-    /* Teleporte para portas ----------------------------------
-    Teleporta o render caso o player esteja em uma porta e a distância entre o
-    render e o player seja maior que 1 tile */
-    /*if (TeleportePorta(*player, mapa, TAM_TILES)) {
-        player->render.x = playerX;
-        player->render.y = playerY;
-    }*/
 
     // Movimentação horizontal --------------------------------
     // Tolerância de 0.05
