@@ -42,32 +42,34 @@
 		<Unit filename="barra_info.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="controleMatriz.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="controleMatriz.h" />
-		<Unit filename="definicoes.h" />
+		<Unit filename="barra_info.h" />
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="fundo.h" />
 		<Unit filename="jogo.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="jogo.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mapa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mapa.h" />
 		<Unit filename="menu_principal.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="novoMovimento.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="menu_principal.h" />
 		<Unit filename="render_jogo.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="render_jogo.h" />
 		<Unit filename="render_player.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="render_player.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

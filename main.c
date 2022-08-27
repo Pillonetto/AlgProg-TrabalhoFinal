@@ -101,7 +101,7 @@ int main() {
                                                 .x = (player.x * TAM_TILES),
                                                 .y = (player.y * TAM_TILES)};
                     player.x = 1;
-                    player.y = 1;
+                    player.y = 8;
                     player.render.x = player.x * TAM_TILES;
                     player.render.y = player.y * TAM_TILES;
                     UnloadRenderTexture(render);
