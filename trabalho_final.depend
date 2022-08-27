@@ -84,34 +84,35 @@
 	"mapa.h"
 	"jogo.h"
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
+1661629227 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
 	"raylib.h"
 	"barra_info.h"
 
 1661620282 d:\trabalhofinal\algprog-trabalhofinal\barra_info.h
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
+1661629243 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
 	"raylib.h"
 	"fundo.h"
 
 1661620282 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
 	"jogo.h"
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+1661628533 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
 	"mapa.h"
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
+1661627788 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1661629336 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+	<ctype.h>
 	"raylib.h"
-	"jogo.h"
 	"render_player.h"
-
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
+	"render_jogo.h"
 	"jogo.h"
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
-	<string.h>
+1661629113 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
+	"jogo.h"
+
+1661629374 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
@@ -122,26 +123,29 @@
 
 1661620282 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
+1661629133 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"mapa.h"
 	"jogo.h"
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
+1661629281 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
 	"raylib.h"
 	"menu_principal.h"
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
-	"raylib.h"
-	"render_jogo.h"
-
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
-	<math.h>
+1661629265 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
 	"raylib.h"
 	"render_player.h"
 	"render_jogo.h"
-	"jogo.h"
 
-1661620282 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
+1661629259 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1661629273 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
+	<string.h>
 	"mapa.h"
 

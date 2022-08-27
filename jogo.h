@@ -13,9 +13,9 @@ typedef struct {
     Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
 
-void Jogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
-void MovimentoVertical(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, Player *player, int direcao);
-void MovimentoHorizontal(char mapa[MAPA_L][MAPA_C], int colunas, Player *player, int direcao);
-void busca_porta(char mapa[MAPA_L][MAPA_C], int linhas, int colunas, int playerX, int playerY, int *x_porta, int *y_porta);
+void Jogo(Mapa mapa, Texture2D tileset, Player *player, int frames);
+void MovimentoVertical(Mapa mapa, Player *player, int direcao);
+void MovimentoHorizontal(Mapa mapa, Player *player, int direcao);
+void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta);
 
 #endif // JOGO_H

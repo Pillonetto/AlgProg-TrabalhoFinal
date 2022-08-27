@@ -1,13 +1,13 @@
 #include <math.h>
 #include <ctype.h>
 #include "raylib.h"
-#include "render_player.h"
 #include "render_jogo.h"
 #include "jogo.h"
+#include "render_player.h"
 
 /* Controla a posição e estado de animação do render com base na distância entre o render
 e a posição do player na matriz */
-void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C], int c) {
+void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C]) {
     int playerX = player->x * TAM_TILES;
     int playerY = player->y * TAM_TILES;
 

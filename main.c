@@ -1,4 +1,3 @@
-#include <string.h>
 #include "raylib.h"
 #include "barra_info.h"
 #include "fundo.h"
@@ -24,9 +23,7 @@ int main() {
 
     // VARIÁVEIS -----------------------------------------------------
 
-    // Mapa
-    char mapa[MAPA_L][MAPA_C];
-    int l, c;
+    Mapa mapa;
 
     // Variáveis de controle
     int telaAtual = MENU;
@@ -91,7 +88,7 @@ int main() {
                 if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
                 if (!jogoInit)
                 {
-                    CarregaMapa(mapa, &l, &c);
+                    CarregaMapa(&mapa);
                     for (i = 0; i < N_BG; i++) {
                         bg[i].x = -bg[i].textura.width/2;
                         bg[i].y = 0;
@@ -105,15 +102,15 @@ int main() {
                     player.render.x = player.x * TAM_TILES;
                     player.render.y = player.y * TAM_TILES;
                     UnloadRenderTexture(render);
-                    render = LoadRenderTexture(TAM_TILES*c, TAM_TILES*l + TAM_BARRA);
+                    render = LoadRenderTexture(TAM_TILES*mapa.colunas, TAM_TILES*mapa.linhas + TAM_BARRA);
                     renderDest.width = render.texture.width*SCALE;
                     renderDest.height = render.texture.height*SCALE;
                     renderSource.width = render.texture.width;
                     renderSource.height = -render.texture.height;
                     jogoInit = true;
                 }
-                DesenhaFundoJogo(bg, TAM_TILES*l, player);
-                Jogo(mapa, l, c, tileset, &player, frames);
+                DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
+                Jogo(mapa, tileset, &player, frames);
                 break;
 
             case FECHAR:
@@ -139,7 +136,7 @@ int main() {
                     break;
 
                 case JOGO:
-                    BarraInformacoes(TAM_TILES*l*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura);
+                    BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura);
                     break;
             }
 

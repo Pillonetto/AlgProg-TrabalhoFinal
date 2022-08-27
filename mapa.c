@@ -1,16 +1,17 @@
+#include <string.h>
 #include "mapa.h"
 
-void CarregaMapa(char mapa[MAPA_L][MAPA_C], int *linhas, int *colunas) {
-    strcpy(mapa[0], "XXXXXXXXXXX");
-    strcpy(mapa[1], "X1 C  C2  X");
-    strcpy(mapa[2], "XXHX  XX  X");
-    strcpy(mapa[3], "XCH    1  X");
-    strcpy(mapa[4], "XXX HXHX XX");
-    strcpy(mapa[5], "X   H H   X");
-    strcpy(mapa[6], "X   H HC2 X");
-    strcpy(mapa[7], "X HXX XXXXX");
-    strcpy(mapa[8], "X H X    PX");
-    strcpy(mapa[9], "XXXXXXXXXXX");
-    *linhas = 10;
-    *colunas = 11;
+void CarregaMapa(Mapa *mapa) {
+    strcpy(mapa->matriz[0], "XXXXXXXXXXX");
+    strcpy(mapa->matriz[1], "X1 C  C2  X");
+    strcpy(mapa->matriz[2], "XXHX  XX  X");
+    strcpy(mapa->matriz[3], "XCH    1  X");
+    strcpy(mapa->matriz[4], "XXX HXHX XX");
+    strcpy(mapa->matriz[5], "X   H H   X");
+    strcpy(mapa->matriz[6], "X   H HC2 X");
+    strcpy(mapa->matriz[7], "X HXX XXXXX");
+    strcpy(mapa->matriz[8], "X H X    PX");
+    strcpy(mapa->matriz[9], "XXXXXXXXXXX");
+    mapa->linhas = 10;
+    mapa->colunas = 11;
 }

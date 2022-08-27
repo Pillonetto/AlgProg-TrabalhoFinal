@@ -9,15 +9,15 @@
 
 /* MACROS PARA TILES
 Determinam se a posição em questão está ocupada (caso não esteja fora dos limites) */
-#define CIMA  (mapa[l-1][c]=='X' && l-1 != -1)
-#define BAIXO (mapa[l+1][c]=='X' && l+1 != lMax)
-#define DIR   (mapa[l][c+1]=='X' && c+1 != cMax)
-#define ESQ   (mapa[l][c-1]=='X' && c-1 != -1)
+#define CIMA  (mapa.matriz[l-1][c]=='X' && l-1 != -1)
+#define BAIXO (mapa.matriz[l+1][c]=='X' && l+1 != mapa.linhas)
+#define DIR   (mapa.matriz[l][c+1]=='X' && c+1 != mapa.colunas)
+#define ESQ   (mapa.matriz[l][c-1]=='X' && c-1 != -1)
 
 Rectangle Tile(int x, int y);
-Rectangle DefineTile(char mapa[MAPA_L][MAPA_C], int l, int c, int lMax, int cMax);
+Rectangle DefineTile(Mapa mapa, int l, int c);
 void DesenhaNumPorta(char num, int x, int y);
-void DesenhaTiles(char mapa[MAPA_L][MAPA_C], Texture2D tileset, int l, int c);
-void RenderJogo(char mapa[MAPA_L][MAPA_C], int l, int c, Texture2D tileset, Player *player, int frames);
+void DesenhaTiles(Mapa mapa, Texture2D tileset);
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames);
 
 #endif // RENDER_JOGO_H

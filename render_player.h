@@ -14,7 +14,7 @@
 #define P_DIREITA  +1
 #define P_ESQUERDA -1
 
-void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C], int c);
+void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C]);
 void AnimaPlayerSprite(Player *player, int frames, int numSprites, int frameRate);
 void DesenhaPlayer(Player *player, int frames);
 
