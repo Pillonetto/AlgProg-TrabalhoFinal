@@ -4,7 +4,7 @@
 #include "render_jogo.h"
 #include "jogo.h"
 
-void Jogo(Mapa mapa, Texture2D tileset, Player *player, int frames) {
+void Jogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animacao *caixa) {
 
     if (player->estado == IDLE)
     {
@@ -22,7 +22,7 @@ void Jogo(Mapa mapa, Texture2D tileset, Player *player, int frames) {
     }
 
     AnimaPlayerPos(player, mapa.matriz);
-    RenderJogo(mapa, tileset, player, frames);
+    RenderJogo(mapa, tileset, player, frames, caixa);
 }
 
 void MovimentoVertical(Mapa mapa, Player *player, int direcao){

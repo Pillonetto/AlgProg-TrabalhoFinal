@@ -1,7 +1,6 @@
 #include "raylib.h"
 #include "barra_info.h"
 #include "fundo.h"
-#include "jogo.h"
 #include "menu_principal.h"
 #include "render_jogo.h"
 #include "mapa.h"
@@ -41,17 +40,21 @@ int main() {
 
     // Tileset usado nos mapas
     Texture2D tileset = LoadTexture("resources/oak_woods_tileset.png");
-    /* Sprites usados pelo player */
+    // Sprites usados pelo player
     player.textura = LoadTexture("resources/player_sprite.png");
     player.spriteAtual.width = player.textura.width/8;
     player.spriteAtual.height = player.textura.height/5;
     player.spriteAtual.x = 0;
     player.spriteAtual.y = 0;
-    /* Fonte usada no menu */
-    Font fonteMenu = LoadFontEx("resources/alagard.ttf", TAM_FONTE, 0, 250);
-    /* Coração usado na barra do jogo */
+    // Fonte usada no menu
+    Font fonteMenu = LoadFontEx("resources/alagard.ttf", 50, 0, 250);
+    // Coração usado na barra do jogo
     Texture2D vidaTextura = LoadTexture("resources/life_points.png");
-
+    // Spritesheet utilizado para as caixas
+    Animacao caixa;
+    caixa.textura = LoadTexture("resources/chest_sprite.png");
+    for (i = 0; i < N_ANIM; i++)
+        caixa.source[i] = (Rectangle){0, 0, 30, 24};
     /* Fundo do jogo, contendo a textura de cada camada e suas posições */
     Background bg[N_BG];
     bg[0].textura = LoadTexture("resources/background_layer_1.png");
@@ -66,9 +69,7 @@ int main() {
     Rectangle renderDest = {.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
 
     select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
-                         .height = TAM_FONTE,
                          .width = render.texture.width*SCALE};
-
 
     // LOOP DO JOGO --------------------------------------------------
     while (!WindowShouldClose() && !fecharJogo)
@@ -110,7 +111,7 @@ int main() {
                     jogoInit = true;
                 }
                 DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
-                Jogo(mapa, tileset, &player, frames);
+                Jogo(mapa, tileset, &player, frames, &caixa);
                 break;
 
             case FECHAR:

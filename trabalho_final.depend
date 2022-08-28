@@ -97,12 +97,12 @@
 1661620282 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
 	"jogo.h"
 
-1661628533 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+1661704883 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
 	"mapa.h"
 
 1661627788 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1661629336 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1661704915 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
 	<ctype.h>
 	"raylib.h"
 	"render_player.h"
@@ -112,26 +112,25 @@
 1661629113 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
 	"jogo.h"
 
-1661629374 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+1661705280 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
-	"jogo.h"
 	"menu_principal.h"
 	"render_jogo.h"
 	"mapa.h"
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+1661630446 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
 
-1661629133 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
-	"mapa.h"
+1661705086 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"jogo.h"
+	"mapa.h"
 
-1661629281 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
+1661630946 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
 	"raylib.h"
 	"menu_principal.h"
 
-1661629265 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+1661705197 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
 	"raylib.h"
 	"render_player.h"

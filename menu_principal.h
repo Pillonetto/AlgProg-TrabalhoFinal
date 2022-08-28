@@ -8,7 +8,6 @@
 #define RANK    2
 
 #define N_OPCOES 4 // Número de opções no menu principal
-#define TAM_FONTE 50 // Tamanho (vertical) da fonte
 
 void AtualizaMenu(Font fonteMenu, int *opc);
 void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle *select);

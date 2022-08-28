@@ -26,12 +26,15 @@ void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
     char textoMenu[N_OPCOES][20] = {"Novo Jogo", "Carregar Jogo", "Ranking", "Sair"};
     int i;
     Vector2 textoPos;
+    int tamFonte = GetScreenHeight()/15;
+
+    select->height = tamFonte;
 
     for (i = 0; i < N_OPCOES; i++) {
         // Alinha o texto horizontalmente ao centro da tela
-        textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoMenu[i], TAM_FONTE, 0).x) / 2;
+        textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoMenu[i], tamFonte, 0).x) / 2;
         // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaçamento
-        textoPos.y = GetScreenHeight()/2 + (i*(TAM_FONTE*1.5));
+        textoPos.y = GetScreenHeight()/2 + (i*(tamFonte*1.5));
 
         // Desenha e anima um retângulo em cima da opção selecionada
         if (i == selecionada)
@@ -44,7 +47,7 @@ void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
             DrawRectangleRec(*select, Fade(BLACK, 0.45));
         }
         // Desenha as opções
-        DrawTextEx(fonte, textoMenu[i], textoPos, TAM_FONTE, 1, WHITE);
+        DrawTextEx(fonte, textoMenu[i], textoPos, tamFonte, 1, WHITE);
     }
 }
 
