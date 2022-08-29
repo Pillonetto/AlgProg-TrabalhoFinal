@@ -30,7 +30,8 @@ typedef struct {
     Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
 
-void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao);
+void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos);
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao);
 void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao);
 void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta);

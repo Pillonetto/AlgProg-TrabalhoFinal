@@ -97,13 +97,13 @@
 1661723562 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
 	"jogo.h"
 
-1661736117 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+1661738914 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
 	"mapa.h"
 	"caixas.h"
 
 1661723562 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1661736182 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1661738922 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
 	<stdio.h>
 	<ctype.h>
 	"raylib.h"
@@ -115,7 +115,7 @@
 1661723562 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
 	"jogo.h"
 
-1661737153 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+1661740471 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
@@ -126,7 +126,7 @@
 
 1661723562 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
 
-1661736117 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
+1661738984 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"jogo.h"
 	"mapa.h"
 
@@ -134,8 +134,10 @@
 	"raylib.h"
 	"menu_principal.h"
 
-1661738204 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+1661740407 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
+	<stdlib.h>
+	<math.h>
 	"raylib.h"
 	"render_player.h"
 	"render_jogo.h"

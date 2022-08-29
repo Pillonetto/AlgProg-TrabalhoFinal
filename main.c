@@ -73,6 +73,7 @@ int main() {
     RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
     Rectangle renderSource = {.width=render.texture.width, .height=-render.texture.height}; // OpenGL inverte a textura por padrão
     Rectangle renderDest = {.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
+    Vector2 renderPos = {0, 0};
 
     select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
                          .width = render.texture.width*SCALE};
@@ -96,6 +97,7 @@ int main() {
         // Desenha o jogo na textura ------------------------------------------
         BeginTextureMode(render);
 
+        ClearBackground(BLACK);
         switch(telaAtual)
         {
             case MENU:
@@ -130,7 +132,7 @@ int main() {
                     jogoInit = true;
                 }
                 DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
-                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao);
+                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos);
                 break;
 
             case FECHAR:
@@ -147,8 +149,8 @@ int main() {
         // Desenha a textura na tela ------------------------------------------
         BeginDrawing();
 
-            ClearBackground(RAYWHITE);
-            DrawTexturePro(render.texture, renderSource, renderDest, (Vector2){0.0f,0.0f}, 0, WHITE);
+            ClearBackground(BLACK);
+            DrawTexturePro(render.texture, renderSource, renderDest, renderPos, 0, WHITE);
             switch(telaAtual)
             {
                 case MENU:

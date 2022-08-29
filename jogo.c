@@ -6,7 +6,8 @@
 #include "jogo.h"
 #include "caixas.h"
 
-void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao) {
+void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos) {
 
     if (player->estado == IDLE)
     {
@@ -24,7 +25,7 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
     }
 
     AnimaPlayerPos(player, mapa->matriz);
-    RenderJogo(*mapa, tileset, player, frames, caixa, explosao);
+    RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos);
 }
 
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao){

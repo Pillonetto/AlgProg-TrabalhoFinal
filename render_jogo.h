@@ -18,8 +18,8 @@ Rectangle Tile(int x, int y);
 Rectangle DefineTileParede(Mapa mapa, int l, int c);
 void DesenhaNumPorta(char num, int x, int y);
 void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames);
-void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao);
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos);
 void DesenhaCaixa(AnimacaoArr *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames);
-void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos);
+void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos, Vector2 *renderPos);
 
 #endif // RENDER_JOGO_H

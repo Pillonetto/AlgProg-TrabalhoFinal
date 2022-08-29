@@ -1,18 +1,43 @@
 #include <ctype.h>
+#include <stdlib.h>
+#include <math.h>
 #include "raylib.h"
 #include "render_player.h"
 #include "render_jogo.h"
 
-void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos) {
+void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos, Vector2 *renderPos) {
     Vector2 pos;
+    int screenShake = 2;
+
     pos.x = playerPos.x + playerPos.width/2 - 32;
     pos.y = playerPos.y - (explosao->textura.height-playerPos.height);
     explosao->source.x += 64;
+
     DrawTextureRec(explosao->textura, explosao->source, pos, WHITE);
-    DrawText("-1", playerPos.x, playerPos.y-explosao->source.x/64, 1, Fade(WHITE, 512/explosao->source.x));
+    DrawText("-1", playerPos.x, playerPos.y-explosao->source.x/64, 1, Fade(WHITE, 64/explosao->source.x*20));
+
+    // SCREEN SHAKE
+    if (explosao->source.x < explosao->textura.width/2) {
+        if (rand() > RAND_MAX/2)
+            screenShake *= -1;
+        if (fabs(renderPos->x + screenShake) < 4)
+            renderPos->x += screenShake;
+
+        if (rand() > RAND_MAX/2)
+            screenShake *= -1;
+        if (fabs(renderPos->y + screenShake) < 4)
+            renderPos->y += screenShake;
+    }
+    else {
+        renderPos->x -= renderPos->x/5;
+        renderPos->y -= renderPos->y/5;
+    }
+
+    // RESETA VARIÁVEIS
     if (explosao->source.x == explosao->textura.width-64) {
         explosao->flag = 0;
         explosao->source.x = 0;
+        *renderPos = (Vector2){0.0f, 0.0f};
     }
 }
 
@@ -116,7 +141,7 @@ void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames) 
     }
 }
 
-void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao) {
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos) {
         // Bordas laterais
         int alturaTela = TAM_TILES*mapa.linhas;
         int larguraTela = TAM_TILES*mapa.colunas;
@@ -129,5 +154,5 @@ void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animac
         DesenhaPlayer(player, frames);
         if (IsKeyPressed(KEY_B)) explosao->flag = 1;
         if (explosao->flag == 1)
-            DesenhaExplosao(explosao, player->render);
+            DesenhaExplosao(explosao, player->render, renderPos);
 }
