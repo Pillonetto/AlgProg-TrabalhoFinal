@@ -7,9 +7,9 @@
 #include "caixas.h"
 
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
-          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos) {
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]) {
 
-    if (player->estado == IDLE)
+    if (player->estado == IDLE && itens[1].flag == 0)
     {
         // funções de movimentação aqui:
         if (IsKeyPressed(KEY_LEFT))
@@ -17,19 +17,18 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
         if (IsKeyPressed(KEY_RIGHT))
             MovimentoHorizontal(mapa, player, +1);
         if (IsKeyPressed(KEY_UP))
-            MovimentoVertical(mapa, player, -1, caixasAbertas, caixas, explosao);
+            MovimentoVertical(mapa, player, -1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_DOWN))
-            MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, explosao);
+            MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_C)) // DEBUG: Cair
             player->y = 8;
     }
 
     AnimaPlayerPos(player, mapa->matriz);
-    RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos);
+    RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos, itens);
 }
 
-void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao){
-
+void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]){
     //Localizacao do player e portas na matriz mapa
     char posAtualPlayer = mapa->matriz[player->y][player->x];
     int portaX, portaY, item;
@@ -65,13 +64,19 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
                 case CHAVE:
                     //Som?
                     //chaveEncontrada = true;
+                    itens[0].flag = 1;
                     break;
                 case BOMBA:
-                    explosao->flag = 1;
+                    itens[1].flag = 1;
                     //vidas--;
                     break;
                 default:
-                    //pontos += item;
+                    if (item == 50) itens[6].flag = 1;
+                    else if (item == 100) itens[5].flag = 1;
+                    else if (item == 150) itens[4].flag = 1;
+                    else if (item == 200) itens[3].flag = 1;
+                    else if (item == 300) itens[2].flag = 1;
+                    break;
 
         }
 

@@ -5,6 +5,50 @@
 #include "render_player.h"
 #include "render_jogo.h"
 
+void DesenhaItem(AnimacaoItem itens[N_ITENS], Rectangle playerPos, int frames, int i, AnimacaoItem *explosao) {
+    Vector2 origin = {.x = itens[i].dest.width/2, .y = itens[i].dest.height/2};
+    float playerX = playerPos.x + playerPos.width/2;
+    float playerY = playerPos.y + playerPos.height/2;
+
+    // Inicialização do render
+    if (itens[i].source.x == 0) {
+        itens[i].dest.x = playerX;
+        itens[i].dest.y = playerY;
+        itens[i].source.x += itens[i].source.width;
+    }
+
+    // Animação do sprite
+    if (frames % 10 == 0 && itens[i].source.x != itens[i].textura.width-itens[i].source.width)
+        itens[i].source.x += itens[i].source.width;
+
+    // Animação do item subindo e descendo
+    itens[i].dest.y -= itens[i].velocidade;
+    if (itens[i].velocidade < 0.4 && itens[i].velocidade > -0.4)
+        itens[i].velocidade -= 0.025; // Mantém o item mais tempo no ar
+    else
+        itens[i].velocidade -= 0.1;
+
+    // Animação do item indo em direção ao jogador (horizontalmente)
+    if (itens[i].dest.x > playerX)
+        itens[i].dest.x -= 0.5;
+    if (itens[i].dest.x < playerX)
+        itens[i].dest.x += 0.5;
+
+    itens[i].rotation += 0.5;
+
+    DrawTexturePro(itens[i].textura, itens[i].source, itens[i].dest, origin, itens[i].rotation, WHITE);
+
+    // Finaliza a animação
+    if (itens[i].dest.y > playerY) {
+        itens[i].source.x = 0;
+        itens[i].rotation = 0;
+        itens[i].velocidade = 2.5;
+        itens[i].flag = 0;
+        if (i == 1) // Se for bomba, inicia explosão
+            explosao->flag = 1;
+    }
+}
+
 void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos, Vector2 *renderPos) {
     Vector2 pos;
     int screenShake = 2;
@@ -141,7 +185,10 @@ void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames) 
     }
 }
 
-void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos) {
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos,
+                AnimacaoItem itens[N_ITENS]) {
+        int i;
+
         // Bordas laterais
         int alturaTela = TAM_TILES*mapa.linhas;
         int larguraTela = TAM_TILES*mapa.colunas;
@@ -151,8 +198,15 @@ void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animac
         DrawRectangle(larguraTela - larguraBorda, 0, larguraBorda, alturaTela, BLACK);
 
         DesenhaTiles(mapa, tileset, caixa, frames);
+
+        for (i = 0; i < N_ITENS; i++) {
+            if (itens[i].flag == 1) {
+                DesenhaItem(itens, player->render, frames, i, explosao);
+            }
+        }
+
         DesenhaPlayer(player, frames);
-        if (IsKeyPressed(KEY_B)) explosao->flag = 1;
+
         if (explosao->flag == 1)
             DesenhaExplosao(explosao, player->render, renderPos);
 }

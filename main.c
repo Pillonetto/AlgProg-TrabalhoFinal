@@ -68,6 +68,24 @@ int main() {
     explosao.textura = LoadTexture("resources/explosion.png");
     explosao.source = (Rectangle){0, 0, 64, 40};
     explosao.flag = 0;
+    /* Sprites usados nos itens das caixas
+    [0: Chave, 1: Bomba, 2: Coroa, 3: Anel, 4: Rubi, 5: Safira, 6: Ametista] */
+    AnimacaoItem itens[N_ITENS];
+    itens[0].textura = LoadTexture("resources/key.png");
+    itens[1].textura = LoadTexture("resources/bomb.png");
+    itens[2].textura = LoadTexture("resources/crown.png");
+    itens[3].textura = LoadTexture("resources/ring.png");
+    itens[4].textura = LoadTexture("resources/ruby.png");
+    itens[5].textura = LoadTexture("resources/sapphire.png");
+    itens[6].textura = LoadTexture("resources/amethyst.png");
+    for (i = 0; i < N_ITENS; i++) {
+        itens[i].source = (Rectangle){0, 0, itens[i].textura.width/6, itens[i].textura.height};
+        itens[i].dest = itens[i].source;
+        itens[i].rotation = 0;
+        itens[i].flag = 0;
+        itens[i].velocidade = 2.5;
+    }
+
 
     // Textura onde será renderizado o jogo
     RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
@@ -84,7 +102,7 @@ int main() {
     int fase = 1;
     int caixasAbertas = 0;
     //Vetor que contem os itens que o player recebera
-    int caixas[4] = { 0 };
+    int caixas[MAX_CAIXAS] = { 0 };
 
     //Preenchimento do vetor acima
     preencheCaixas(caixasTotal, fase, caixas);
@@ -119,8 +137,8 @@ int main() {
                                                 .height = TAM_TILES,
                                                 .x = (player.x * TAM_TILES),
                                                 .y = (player.y * TAM_TILES)};
-                    player.x = 1;
-                    player.y = 8;
+                    player.x = 6;
+                    player.y = 6;
                     player.render.x = player.x * TAM_TILES;
                     player.render.y = player.y * TAM_TILES;
                     UnloadRenderTexture(render);
@@ -132,7 +150,7 @@ int main() {
                     jogoInit = true;
                 }
                 DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
-                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos);
+                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens);
                 break;
 
             case FECHAR:

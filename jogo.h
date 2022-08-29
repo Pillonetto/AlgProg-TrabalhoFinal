@@ -2,9 +2,10 @@
 #define JOGO_H
 
 #include "mapa.h"
-#include "caixas.h"
 
 #define N_ANIM 10
+#define N_ITENS 7
+#define MAX_CAIXAS 7
 
 /* Estrutura utilizada em casos onde são necessárias múltiplas
 instâncias de uma textura (exemplo: caixas) */
@@ -17,7 +18,10 @@ typedef struct {
 typedef struct {
     Texture2D textura;
     Rectangle source;
+    Rectangle dest;
+    float rotation;
     int flag; // [0, 1]: Determina se a animação deve ocorrer ou não
+    float velocidade; // Velocidade de movimentação do render
 } AnimacaoItem;
 
 typedef struct {
@@ -31,8 +35,8 @@ typedef struct {
 } Player;
 
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
-          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos);
-void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem *explosao);
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]);
+void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]);
 void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao);
 void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta);
 

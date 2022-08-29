@@ -5,10 +5,6 @@
 #include "caixas.h"
 #include "jogo.h"
 
-void preencheCaixas (int caixasTotal, int fase, int caixas[MAX_CAIXAS]);
-void geraitens (int caixasTotal, int caixas[MAX_CAIXAS]);
-int abreCaixa (int contagemCaixas, int caixas[MAX_CAIXAS], Mapa *mapa, Player *player);
-
 /*  Contagem de caixas e vetor caixas devem ser declarados no inicio de cada fase
     Funcao recebe o n�mero de caixas da fase e
     gera array com o valor dos bens aleat�rios + chave
