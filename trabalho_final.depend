@@ -84,59 +84,63 @@
 	"mapa.h"
 	"jogo.h"
 
-1661629227 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
+1661723562 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
 	"raylib.h"
 	"barra_info.h"
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\barra_info.h
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\barra_info.h
 
-1661629243 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
+1661723562 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
 	"raylib.h"
 	"fundo.h"
 
-1661620282 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
 	"jogo.h"
 
-1661704883 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+1661736117 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
 	"mapa.h"
+	"caixas.h"
 
-1661627788 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1661704915 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1661736182 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+	<stdio.h>
 	<ctype.h>
 	"raylib.h"
 	"render_player.h"
 	"render_jogo.h"
 	"jogo.h"
+	"caixas.h"
 
-1661629113 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
 	"jogo.h"
 
-1661705280 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+1661737153 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
 	"menu_principal.h"
 	"render_jogo.h"
 	"mapa.h"
+	"caixas.h"
 
-1661630446 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
 
-1661705086 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
+1661736117 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"jogo.h"
 	"mapa.h"
 
-1661630946 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
+1661723562 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
 	"raylib.h"
 	"menu_principal.h"
 
-1661705197 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+1661738204 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
 	"raylib.h"
 	"render_player.h"
 	"render_jogo.h"
 
-1661629259 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
+1661723562 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
 	<math.h>
 	<ctype.h>
 	"raylib.h"
@@ -144,7 +148,97 @@
 	"jogo.h"
 	"render_player.h"
 
-1661629273 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
+1661723562 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
 	<string.h>
+	"mapa.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\barra_info.h
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\fundo.h
+	"jogo.h"
+
+1661722057 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\jogo.h
+	"mapa.h"
+	"caixas.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\mapa.h
+
+1661722184 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_player.h
+	"jogo.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1661721903 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\menu_principal.h
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\mapa.c
+	<string.h>
+	"mapa.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_jogo.c
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1661723127 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1661721245 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\caixas.h
+	"mapa.h"
+
+1661738289 source:d:\trabalhofinal\algprog-trabalhofinal\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1661723562 d:\trabalhofinal\algprog-trabalhofinal\caixas.h
 	"mapa.h"
 

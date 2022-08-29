@@ -17,8 +17,9 @@ Determinam se a posição em questão está ocupada (caso não esteja fora dos limite
 Rectangle Tile(int x, int y);
 Rectangle DefineTileParede(Mapa mapa, int l, int c);
 void DesenhaNumPorta(char num, int x, int y);
-void DesenhaTiles(Mapa mapa, Texture2D tileset, Animacao *caixa, int frames);
-void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animacao *caixa);
-void DesenhaCaixa(Animacao *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames);
+void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames);
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao);
+void DesenhaCaixa(AnimacaoArr *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames);
+void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos);
 
 #endif // RENDER_JOGO_H

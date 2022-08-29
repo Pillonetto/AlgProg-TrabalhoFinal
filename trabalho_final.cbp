@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="barra_info.h" />
+		<Unit filename="caixas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="caixas.h" />
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />
 		</Unit>

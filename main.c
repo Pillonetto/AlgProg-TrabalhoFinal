@@ -4,6 +4,7 @@
 #include "menu_principal.h"
 #include "render_jogo.h"
 #include "mapa.h"
+#include "caixas.h"
 
 // Macro para a escala dos objetos na tela
 #define SCALE Scale(render.texture.height)
@@ -51,7 +52,7 @@ int main() {
     // Coração usado na barra do jogo
     Texture2D vidaTextura = LoadTexture("resources/life_points.png");
     // Spritesheet utilizado para as caixas
-    Animacao caixa;
+    AnimacaoArr caixa;
     caixa.textura = LoadTexture("resources/chest_sprite.png");
     for (i = 0; i < N_ANIM; i++)
         caixa.source[i] = (Rectangle){0, 0, 30, 24};
@@ -62,6 +63,11 @@ int main() {
     bg[2].textura = LoadTexture("resources/background_layer_3.png");
     for (i = 0; i < N_BG; i++)
         bg[i].y = -bg[i].textura.height/(i+2);
+    // Spritesheet utilizado nas explosões (bombas)
+    AnimacaoItem explosao;
+    explosao.textura = LoadTexture("resources/explosion.png");
+    explosao.source = (Rectangle){0, 0, 64, 40};
+    explosao.flag = 0;
 
     // Textura onde será renderizado o jogo
     RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
@@ -70,6 +76,19 @@ int main() {
 
     select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
                          .width = render.texture.width*SCALE};
+
+    //VARIAVEIS QUE DEVEM SER INICIALIZADAS A CADA NOVA FASE. Usadas aqui para testes
+
+    int caixasTotal = 4;
+    int fase = 1;
+    int caixasAbertas = 0;
+    //Vetor que contem os itens que o player recebera
+    int caixas[4] = { 0 };
+
+    //Preenchimento do vetor acima
+    preencheCaixas(caixasTotal, fase, caixas);
+
+    //FIM DE VARIAVEIS DE CAIXAS ---------------------------------------------------
 
     // LOOP DO JOGO --------------------------------------------------
     while (!WindowShouldClose() && !fecharJogo)
@@ -111,7 +130,7 @@ int main() {
                     jogoInit = true;
                 }
                 DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
-                Jogo(mapa, tileset, &player, frames, &caixa);
+                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao);
                 break;
 
             case FECHAR:

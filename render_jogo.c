@@ -3,6 +3,19 @@
 #include "render_player.h"
 #include "render_jogo.h"
 
+void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos) {
+    Vector2 pos;
+    pos.x = playerPos.x + playerPos.width/2 - 32;
+    pos.y = playerPos.y - (explosao->textura.height-playerPos.height);
+    explosao->source.x += 64;
+    DrawTextureRec(explosao->textura, explosao->source, pos, WHITE);
+    DrawText("-1", playerPos.x, playerPos.y-explosao->source.x/64, 1, Fade(WHITE, 512/explosao->source.x));
+    if (explosao->source.x == explosao->textura.width-64) {
+        explosao->flag = 0;
+        explosao->source.x = 0;
+    }
+}
+
 // Facilita a escolha de tiles para o retângulo source
 Rectangle Tile(int x, int y) {
     Rectangle tile;
@@ -36,7 +49,7 @@ Rectangle DefineTileParede(Mapa mapa, int l, int c) {
     return tile;
 }
 
-void DesenhaCaixa(Animacao *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames) {
+void DesenhaCaixa(AnimacaoArr *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames) {
     if (elemento == 'O'
         && caixa->source[numCaixa].x < caixa->textura.width/10 * 9
         && frames % 4 == 0)
@@ -50,7 +63,7 @@ void DesenhaNumPorta(char num, int x, int y) {
 }
 
 // Desenha o mapa do jogo na tela
-void DesenhaTiles(Mapa mapa, Texture2D tileset, Animacao *caixa, int frames) {
+void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames) {
     Rectangle tileSource; // Representa o tile dentro da textura
     Vector2 tilePos; // Representa a posição do tile na tela
     int i, j;
@@ -103,7 +116,7 @@ void DesenhaTiles(Mapa mapa, Texture2D tileset, Animacao *caixa, int frames) {
     }
 }
 
-void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animacao *caixa) {
+void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao) {
         // Bordas laterais
         int alturaTela = TAM_TILES*mapa.linhas;
         int larguraTela = TAM_TILES*mapa.colunas;
@@ -114,4 +127,7 @@ void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animac
 
         DesenhaTiles(mapa, tileset, caixa, frames);
         DesenhaPlayer(player, frames);
+        if (IsKeyPressed(KEY_B)) explosao->flag = 1;
+        if (explosao->flag == 1)
+            DesenhaExplosao(explosao, player->render);
 }
