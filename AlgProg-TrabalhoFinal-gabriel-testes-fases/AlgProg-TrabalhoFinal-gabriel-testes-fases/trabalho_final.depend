@@ -329,20 +329,20 @@
 	"jogo.h"
 	"render_player.h"
 
-1663021975 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.c
 	"raylib.h"
 	"barra_info.h"
 
-1662934999 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
 	"jogo.h"
 
-1663323576 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
+1663326063 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
 	"mapa.h"
 	"raylib.h"
 
-1663240578 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.h
+1663326063 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.h
 
-1662934999 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -350,28 +350,28 @@
 	"caixas.h"
 	"jogo.h"
 
-1662934999 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.h
 	"mapa.h"
 	"jogo.h"
 
-1663021621 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.c
 	"raylib.h"
 	"fundo.h"
 
-1663021618 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
 	"jogo.h"
 
-1663240696 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
+1663326063 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
 	<string.h>
 	"mapa.h"
 
-1663242914 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
 	"raylib.h"
 	"menu_principal.h"
 
-1663323285 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
 
-1662935000 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.c
 	<ctype.h>
 	<stdlib.h>
 	<math.h>
@@ -379,14 +379,14 @@
 	"render_player.h"
 	"render_jogo.h"
 
-1662935000 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
 	"jogo.h"
 
-1662935000 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.h
 	"jogo.h"
 	"mapa.h"
 
-1662935000 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.c
 	<math.h>
 	<ctype.h>
 	"raylib.h"
@@ -394,7 +394,7 @@
 	"jogo.h"
 	"render_player.h"
 
-1663324074 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
@@ -403,7 +403,7 @@
 	"mapa.h"
 	"caixas.h"
 
-1663323985 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
+1663326063 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
 	<stdio.h>
 	<ctype.h>
 	"raylib.h"
@@ -413,11 +413,11 @@
 	"caixas.h"
 	"fundo.h"
 
-1663323626 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
 	"save.h"
 	<stdio.h>
 
-1663323587 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
 	"jogo.h"
 	"mapa.h"
 
