@@ -14,7 +14,7 @@ void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vida
     vidaTextura.height = vidaTextura.width;
 
 
-    int level = 1;
+    int level = player.fase;
     int pontos = player.pontos;
     int vidas = player.vidas;
     bool chaveEncontrada = player.chave;
