@@ -31,10 +31,13 @@ int main() {
     int opc = -1; // Op��o do menu principal selecionada (inic. sem sele��o)
     Rectangle select; // Controla o bot�o de select do menu principal
     Player player;
+    player.fase = 1; //Inicializa o jogo pela primeira fase.
 
     // Flags
     int fecharJogo = false;
     int jogoInit = false;
+    int playerInit = false;
+    int mapaInit = false;
 
 
     // RESOURCES -----------------------------------------------------
@@ -99,13 +102,12 @@ int main() {
     //VARIAVEIS QUE DEVEM SER INICIALIZADAS A CADA NOVA FASE. Usadas aqui para testes
 
     int caixasTotal = 4;
-    int fase = 1;
     int caixasAbertas = 0;
     //Vetor que contem os itens que o player recebera
     int caixas[MAX_CAIXAS] = { 0 };
 
     //Preenchimento do vetor acima
-    preencheCaixas(caixasTotal, fase, caixas);
+    preencheCaixas(caixasTotal, player.fase, caixas);
 
     //FIM DE VARIAVEIS DE CAIXAS ---------------------------------------------------
 
@@ -126,18 +128,32 @@ int main() {
                 /* Inicializa��o do jogo
                 Organizar em fun��es ap�s criar o sistema de n�veis */
                 if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
-                if (!jogoInit) {
 
-                     inicializaPlayer(&player);
-                    //Inicio de fase
-                    player.chave = 0;
-                    //Inicio de jogo
-                    player.fase = 1;
+                if (!mapaInit){
 
                     //CarregaMapa agora recebe o numero da fase para determinar o mapa
                     CarregaMapa(&mapa, player.fase);
+                    mapaInit = true;
+
+                    //Inicio de fase
+                    player.chave = 0;
+
+                }
+
+                if (!playerInit){
+
+                    inicializaPlayer(&player, mapa);
+
+                    playerInit = true;
+
+                }
+
+
+                if (!jogoInit) {
+
 
                     for (i = 0; i < N_BG; i++) {
+
                         bg[i].x = -bg[i].textura.width/2;
                         bg[i].y = 0;
                     }
@@ -162,9 +178,24 @@ int main() {
                 }
                 //else if (player.vidas < 0)
                     //tela de morte
-                //else
-                    //tela de fim de fase
-                    //player.fase++;
+                // Se jogo terminar e nao for por vidas, jogador chegou ao fim da fase.
+                else {
+                    //Adicionar tela de fim de fase
+
+                    passaFase(&player, mapa, &caixasTotal, &caixasAbertas);
+                    preencheCaixas(caixasTotal, player.fase, caixas);
+
+                    //Reset de flags
+                    mapa.fim = 0;
+                    mapaInit = false;
+                    jogoInit = false;
+
+                    // Reset de caixas
+                    for (i = 0; i < N_ANIM; i++)
+                        caixa.source[i] = (Rectangle){0, 0, 30, 24};
+
+                }
+
 
                 break;
 

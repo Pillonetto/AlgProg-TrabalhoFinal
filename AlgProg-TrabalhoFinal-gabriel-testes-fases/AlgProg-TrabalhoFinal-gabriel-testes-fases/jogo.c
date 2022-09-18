@@ -12,19 +12,31 @@
 // Macro para a escala dos objetos na tela
 #define SCALE Scale(render.texture.height)
 
-void inicializaPlayer(Player *player){
+void inicializaPlayer(Player *player, Mapa mapa){
 
     player->render = (Rectangle){.width = TAM_TILES,
                             .height = TAM_TILES,
                             .x = (player->x * TAM_TILES),
                             .y = (player->y * TAM_TILES)};
-    player->x = 6;
-    player->y = 6;
+    player->x = 1;
+    player->y = mapa.linhas - 2;
     player->vidas = 3;
     player->pontos = 0;
 
     player->render.x = player->x * TAM_TILES;
     player->render.y = player->y * TAM_TILES;
+
+}
+
+void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas){
+
+    player->fase++;
+    if (player->vidas < 3)
+        player->vidas++;
+    player->x = 1;
+    player->y = mapa.linhas - 2;
+    (*caixasTotal)++;
+    *caixasAbertas = 0;
 
 }
 
@@ -65,7 +77,7 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
     int portaX, portaY, item;
 
     //Player esta em porta?
-    if (isdigit(posAtualPlayer) && direcao == -1){
+    if (isdigit(posAtualPlayer)){
         busca_porta(*mapa, player->y, player->x, &portaY, &portaX);
 
         player->x = portaX;
@@ -208,7 +220,8 @@ void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta
 
         for (int j = 0; j < colunas; j++){
 
-            if ( mapa.matriz[i][j] == mapa.matriz[playerX][playerY] && (i != playerX && j != playerY) ) {
+            if ( mapa.matriz[i][j] == mapa.matriz[playerX][playerY]
+                && (i != playerX || j != playerY) ) {
 
                 *x_porta = i;
                 *y_porta = j;

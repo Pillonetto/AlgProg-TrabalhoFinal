@@ -20,6 +20,10 @@ void preencheCaixas (int caixasTotal, int fase, int caixas[MAX_CAIXAS]){
     int index, bomba = fase;
     srand(time(NULL));
 
+    //Reseta o vetor de caixas
+    for (int i = 0; i < MAX_CAIXAS; i++)
+        caixas[i] = 0;
+
     //Gera indice aleatorio entre 0 e o n�mero de caixas
     index = (rand() % caixasTotal);
     caixas[index] = CHAVE;

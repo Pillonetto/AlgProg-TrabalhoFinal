@@ -39,7 +39,8 @@ typedef struct {
     Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
 
-void inicializaPlayer(Player *player);
+void inicializaPlayer(Player *player, Mapa mapa);
+void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas);
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
           int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]);
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]);
