@@ -2,6 +2,7 @@
 #include "menu_principal.h"
 #include "mapa.h"
 #include "jogo.h"
+#include "render_jogo.h"
 
 void AtualizaMenu(Font fonteMenu, int *opc, int nOpcoes) {
     // Se uma das setas verticais for pressionada com o menu "zerado", coloca a opcão em 0
@@ -86,14 +87,20 @@ void DesenhaLoad(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
     }
 }
 
-void ControlaLoad(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select, Mapa *mapa, Player *player) {
+void ControlaLoad(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select, Mapa *mapa, Player *player,
+                  int *mapaInit, int *playerInit) {
     AtualizaMenu(fonteMenu, opc, N_OPCOES_SL);
 
     if (IsKeyPressed(KEY_ENTER)) {
         switch(*opc) {
             case 0:
-                recuperaJogo(mapa, player);
+                inicializaPlayer(player, *mapa);
+                *mapaInit = true;
+                *playerInit = true;
                 *telaAtual = JOGO;
+                recuperaJogo(mapa, player);
+                player->render.x = player->x * TAM_TILES;
+                player->render.y = player->y * TAM_TILES;
                 break;
             case 1:
                 *opc = 0;

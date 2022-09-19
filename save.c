@@ -87,26 +87,26 @@ void recuperaJogo (Mapa *mapa, Player *player){
     FILE *save = fopen("jogo.dat", "rb");
 
     // Limites do mapa
-    fread(mapa->linhas, sizeof(int), 1, save);
-    fread(mapa->colunas, sizeof(int), 1, save);
+    fread(&mapa->linhas, sizeof(int), 1, save);
+    fread(&mapa->colunas, sizeof(int), 1, save);
     // Fim de fase
-    fread(mapa->fim_x, sizeof(int), 1, save);
-    fread(mapa->fim_y, sizeof(int), 1, save);
+    fread(&mapa->fim_x, sizeof(int), 1, save);
+    fread(&mapa->fim_y, sizeof(int), 1, save);
     // Matriz do mapa
     for (int i = 0; i < mapa->linhas; i++)
-        fread(mapa->matriz[i], mapa->colunas, 1, save);
+        fread(&mapa->matriz[i], mapa->colunas, 1, save);
 
     // Posicao do player
-    fread(player->x, sizeof(int), 1, save);
-    fread(player->y, sizeof(int), 1, save);
+    fread(&player->x, sizeof(int), 1, save);
+    fread(&player->y, sizeof(int), 1, save);
     // Vidas e pontos
-    fread(player->vidas, sizeof(int), 1, save);
-    fread(player->pontos,  sizeof(int), 1, save);
+    fread(&player->vidas, sizeof(int), 1, save);
+    fread(&player->pontos,  sizeof(int), 1, save);
     // Estava com a chave?
-    fread(player->chave, sizeof(int), 1, save);
+    fread(&player->chave, sizeof(int), 1, save);
 
     // Numero da fase
-    fread(player->fase, sizeof(int), 1, save);
+    fread(&player->fase, sizeof(int), 1, save);
 
     fclose(save);
 

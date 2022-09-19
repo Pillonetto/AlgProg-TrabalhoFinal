@@ -235,7 +235,7 @@ int main() {
                     break;
 
                 case LOAD:
-                    ControlaLoad(render, fonteMenu, &opc, &telaAtual, &select, &mapa, &player);
+                    ControlaLoad(render, fonteMenu, &opc, &telaAtual, &select, &mapa, &player, &mapaInit, &playerInit);
                     break;
             }
 
