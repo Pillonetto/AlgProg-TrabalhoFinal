@@ -98,13 +98,13 @@
 1663519873 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
 	"jogo.h"
 
-1663606464 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+1663614254 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
 	"mapa.h"
 	"raylib.h"
 
 1663519873 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1663607233 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1663617855 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
 	<stdio.h>
 	<ctype.h>
 	"raylib.h"
@@ -115,10 +115,10 @@
 	"fundo.h"
 	"menu_principal.h"
 
-1663519873 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
+1663614665 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
 	"jogo.h"
 
-1663608461 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+1663617732 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
@@ -127,9 +127,9 @@
 	"mapa.h"
 	"caixas.h"
 
-1663606996 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+1663615775 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
 
-1663519873 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
+1663614699 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"jogo.h"
 	"mapa.h"
 
@@ -140,7 +140,7 @@
 	"jogo.h"
 	"render_jogo.h"
 
-1663519873 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+1663614692 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
 	<stdlib.h>
 	<math.h>
@@ -148,13 +148,14 @@
 	"render_player.h"
 	"render_jogo.h"
 
-1663519873 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
+1663618000 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
 	<math.h>
 	<ctype.h>
 	"raylib.h"
 	"render_jogo.h"
 	"jogo.h"
 	"render_player.h"
+	"menu_principal.h"
 
 1663519873 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
 	<string.h>
@@ -615,7 +616,7 @@
 	"jogo.h"
 	"mapa.h"
 
-1663610048 source:d:\trabalhofinal\algprog-trabalhofinal\save.c
+1663617535 source:d:\trabalhofinal\algprog-trabalhofinal\save.c
 	"save.h"
 	"menu_principal.h"
 	<stdio.h>
@@ -623,4 +624,11 @@
 1663607349 d:\trabalhofinal\algprog-trabalhofinal\save.h
 	"jogo.h"
 	"mapa.h"
+
+1663617732 source:d:\trabalhofinal\algprog-trabalhofinal\game_over.c
+	"raylib.h"
+	"game_over.h"
+	"menu_principal.h"
+
+1663617681 d:\trabalhofinal\algprog-trabalhofinal\game_over.h
 

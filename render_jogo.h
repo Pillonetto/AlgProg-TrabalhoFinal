@@ -19,9 +19,9 @@ Rectangle DefineTileParede(Mapa mapa, int l, int c);
 void DesenhaNumPorta(char num, int x, int y);
 void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames);
 void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos,
-                AnimacaoItem itens[N_ITENS]);
+                AnimacaoItem itens[N_ITENS], int *telaAtual);
 void DesenhaCaixa(AnimacaoArr *caixa, Vector2 tilePos, char elemento, int numCaixa, int frames);
 void DesenhaExplosao(AnimacaoItem *explosao, Rectangle playerPos, Vector2 *renderPos);
-void DesenhaItem(AnimacaoItem itens[N_ITENS], Rectangle playerPos, int frames, int i, AnimacaoItem *explosao);
+void DesenhaItem(AnimacaoItem itens[N_ITENS], Player *player, int frames, int i, AnimacaoItem *explosao);
 
 #endif // RENDER_JOGO_H

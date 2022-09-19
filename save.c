@@ -19,8 +19,6 @@ void menuSave(Mapa mapa, Player player, Font fonte, int *opc, int *telaAtual, Re
         *telaAtual = JOGO;
     }
 
-    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5));
-
     textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoEnunciado, tamFonte, 0).x) / 2;
     textoPos.y = GetScreenHeight()/2 - (tamFonte*1.5);
     DrawTextEx(fonte, textoEnunciado, textoPos, tamFonte, 1, WHITE);

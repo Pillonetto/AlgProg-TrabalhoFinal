@@ -23,6 +23,11 @@ void inicializaPlayer(Player *player, Mapa mapa){
     player->y = mapa.linhas - 2;
     player->vidas = 3;
     player->pontos = 0;
+    player->chave = 0;
+    player->estado = IDLE;
+    player->fase = 1;
+    player->quedaDano = 0;
+    player->spriteAtual.x = 0;
 
     player->render.x = player->x * TAM_TILES;
     player->render.y = player->y * TAM_TILES;
@@ -60,10 +65,15 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
             MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_S))
             *telaAtual = SAVE;
+
+        if (IsKeyPressed(KEY_B)) {
+            player->vidas = 1;
+            itens[1].flag = 1;
+        }
     }
 
     AnimaPlayerPos(player, mapa->matriz);
-    RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos, itens);
+    RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos, itens, telaAtual);
 }
 
 /* Controle de movimento vertical
@@ -115,7 +125,6 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
                     break;
                 case BOMBA:
                     itens[1].flag = 1;
-                    player->vidas--;
                     break;
                 default:
                     if (item == 50) itens[6].flag = 1;
@@ -198,8 +207,9 @@ void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao){
     }
 
     //Queda de 3 blocos ou mais reduz vida.
-    if (blocosQueda > 2)
-        player->vidas--;
+    if (blocosQueda > 2) {
+        player->quedaDano = 1;
+    }
 
 }
 

@@ -38,6 +38,7 @@ int main() {
     int jogoInit = false;
     int playerInit = false;
     int mapaInit = false;
+    int menuInit = false;
 
 
     // RESOURCES -----------------------------------------------------
@@ -64,8 +65,6 @@ int main() {
     bg[0].textura = LoadTexture("resources/background_layer_1.png");
     bg[1].textura = LoadTexture("resources/background_layer_2.png");
     bg[2].textura = LoadTexture("resources/background_layer_3.png");
-    for (i = 0; i < N_BG; i++)
-        bg[i].y = -bg[i].textura.height/(i+2);
     // Spritesheet utilizado nas explos�es (bombas)
     AnimacaoItem explosao;
     explosao.textura = LoadTexture("resources/explosion.png");
@@ -89,15 +88,12 @@ int main() {
         itens[i].velocidade = 2.5;
     }
 
-
     // Textura onde ser� renderizado o jogo
-    RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
-    Rectangle renderSource = {.width=render.texture.width, .height=-render.texture.height}; // OpenGL inverte a textura por padr�o
-    Rectangle renderDest = {.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
-    Vector2 renderPos = {0, 0};
+    RenderTexture2D render;
+    Rectangle renderSource;
+    Rectangle renderDest;
+    Vector2 renderPos;
 
-    select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
-                         .width = render.texture.width*SCALE};
 
     //VARIAVEIS QUE DEVEM SER INICIALIZADAS A CADA NOVA FASE. Usadas aqui para testes
 
@@ -121,9 +117,28 @@ int main() {
         switch(telaAtual)
         {
             case MENU:
+                if (!menuInit) {
+                    render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
+                    // Height negativo pois o OpenGL inverte a textura por padrão
+                    renderSource = (Rectangle){.width=render.texture.width, .height=-render.texture.height};
+                    renderDest = (Rectangle){.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
+                    renderPos = (Vector2){0, 0};
+                    select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
+                         .width = render.texture.width*SCALE};
+                    for (i = 0; i < N_BG; i++) {
+                        bg[i].y = -bg[i].textura.height/(i+2);
+                        bg[i].x = 0;
+                    }
+                    fecharJogo = false;
+                    jogoInit = false;
+                    playerInit = false;
+                    mapaInit = false;
+                    menuInit = true;
+                }
                 DesenhaFundoMenu(bg, frames);
                 break;
 
+            case GAME_OVER:
             case SAVE:
             case JOGO:
                 /* Inicializa��o do jogo
@@ -201,7 +216,6 @@ int main() {
                 break;
 
             case LOAD:
-                //Se player confirmar o carregamento do save
                 DesenhaFundoMenu(bg, frames);
                 break;
 
@@ -227,11 +241,15 @@ int main() {
                     MenuPrincipal(render, fonteMenu, &opc, &telaAtual, &select);
                     break;
 
+                case GAME_OVER:
                 case SAVE:
+                    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5));
                 case JOGO:
                     BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura, player);
                     if (telaAtual == SAVE)
                         menuSave(mapa, player, fonteMenu, &opc, &telaAtual, &select);
+                    if (telaAtual == GAME_OVER)
+                        gameOver(fonteMenu, &opc, &telaAtual, &select, &menuInit);
                     break;
 
                 case LOAD:

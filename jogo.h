@@ -35,6 +35,7 @@ typedef struct {
     int fase;
     int estado; // Estado do player (idle, andando, caindo, etc)
     int direcao; // Direcao que o player está olhando (+1: direita, -1: esquerda)
+    int quedaDano; // Indica se o player deve perder vida com a queda
     Rectangle spriteAtual; // Corresponde ao sprite sendo usado atualmente (source para o DrawTexturePro)
     Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
