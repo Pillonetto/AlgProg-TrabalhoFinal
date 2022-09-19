@@ -6,6 +6,7 @@
 #include "jogo.h"
 #include "caixas.h"
 #include "fundo.h"
+#include "menu_principal.h"
 
 #define TAM_BARRA 10
 
@@ -35,15 +36,18 @@ void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas){
         player->vidas++;
     player->x = 1;
     player->y = mapa.linhas - 2;
+    player->render.x = player->x * TAM_TILES;
+    player->render.y = player->y * TAM_TILES;
     (*caixasTotal)++;
     *caixasAbertas = 0;
 
 }
 
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
-          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]) {
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS],
+          int *telaAtual) {
 
-    if (player->estado == IDLE && itens[1].flag == 0)
+    if (player->estado == IDLE && itens[1].flag == 0 && *telaAtual == JOGO)
     {
         // fun��es de movimenta��o aqui:
         if (IsKeyPressed(KEY_LEFT))
@@ -55,8 +59,7 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
         if (IsKeyPressed(KEY_DOWN))
             MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_S))
-            //Confirmar save com o player? Se possivel
-            salvaJogo (mapa, player);
+            *telaAtual = SAVE;
     }
 
     AnimaPlayerPos(player, mapa->matriz);

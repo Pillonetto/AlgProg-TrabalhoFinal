@@ -42,7 +42,7 @@ typedef struct {
 void inicializaPlayer(Player *player, Mapa mapa);
 void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas);
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
-          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]);
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS], int *telaAtual);
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]);
 void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao);
 void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta);

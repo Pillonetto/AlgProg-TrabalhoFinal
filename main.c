@@ -124,10 +124,11 @@ int main() {
                 DesenhaFundoMenu(bg, frames);
                 break;
 
+            case SAVE:
             case JOGO:
                 /* Inicializa��o do jogo
                 Organizar em fun��es ap�s criar o sistema de n�veis */
-                if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
+                if (IsKeyPressed(KEY_R)) playerInit = false; // teste
 
                 if (!mapaInit){
 
@@ -174,7 +175,7 @@ int main() {
                     //Essas funcoes sao as mesmas pra todas as fases
                     DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
                     //Jogo roda ate alterar player encontrar chave e interagir com o fim da fase (esse controle esta na movimentoVertical)
-                    Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens);
+                    Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens, &telaAtual);
                 }
                 //else if (player.vidas < 0)
                     //tela de morte
@@ -199,7 +200,7 @@ int main() {
 
                 break;
 
-            case SAVE:
+            case LOAD:
                 //Se player confirmar o carregamento do save
                 DesenhaFundoMenu(bg, frames);
                 break;
@@ -226,11 +227,14 @@ int main() {
                     MenuPrincipal(render, fonteMenu, &opc, &telaAtual, &select);
                     break;
 
+                case SAVE:
                 case JOGO:
                     BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura, player);
+                    if (telaAtual == SAVE)
+                        menuSave(mapa, player, fonteMenu, &opc, &telaAtual, &select);
                     break;
 
-                case SAVE:
+                case LOAD:
                     ControlaLoad(render, fonteMenu, &opc, &telaAtual, &select, &mapa, &player);
                     break;
             }

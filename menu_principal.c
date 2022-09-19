@@ -55,7 +55,7 @@ void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
 
 void DesenhaLoad(RenderTexture2D render, Font fonte, int selecionada, Rectangle *select) {
     char textoEnunciado[] = "Deseja carregar o jogo salvo?";
-    char textoOpcoes[N_OPCOES_LOAD][5] = {"Sim", "Nao"};
+    char textoOpcoes[N_OPCOES_SL][5] = {"Sim", "Nao"};
     int i;
     Vector2 textoPos;
     int tamFonte = GetScreenHeight()/15;
@@ -64,7 +64,7 @@ void DesenhaLoad(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
     textoPos.y = GetScreenHeight()/2 - (tamFonte*1.5);
     DrawTextEx(fonte, textoEnunciado, textoPos, tamFonte, 1, WHITE);
 
-    for (i = 0; i < N_OPCOES_LOAD; i++) {
+    for (i = 0; i < N_OPCOES_SL; i++) {
         // Alinha o texto horizontalmente ao centro da tela
         textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoOpcoes[i], tamFonte, 0).x) / 2;
         // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaçamento
@@ -87,7 +87,7 @@ void DesenhaLoad(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
 }
 
 void ControlaLoad(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select, Mapa *mapa, Player *player) {
-    AtualizaMenu(fonteMenu, opc, N_OPCOES_LOAD);
+    AtualizaMenu(fonteMenu, opc, N_OPCOES_SL);
 
     if (IsKeyPressed(KEY_ENTER)) {
         switch(*opc) {
@@ -118,7 +118,7 @@ void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAt
                 break;
             case 1:
                 *opc = 0;
-                *telaAtual = SAVE;
+                *telaAtual = LOAD;
                 break;
             case 2:
                 *telaAtual = RANK;

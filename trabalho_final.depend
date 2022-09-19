@@ -520,7 +520,7 @@
 1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
 	"jogo.h"
 
-1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
+1663606464 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
 	"mapa.h"
 	"raylib.h"
 
@@ -545,7 +545,7 @@
 1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
 	"jogo.h"
 
-1663605118 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
+1663607233 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
 	<stdio.h>
 	<ctype.h>
 	"raylib.h"
@@ -554,6 +554,7 @@
 	"jogo.h"
 	"caixas.h"
 	"fundo.h"
+	"menu_principal.h"
 
 1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
 	"jogo.h"
@@ -562,7 +563,7 @@
 	"jogo.h"
 	"mapa.h"
 
-1663605059 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
+1663607368 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
 	"raylib.h"
 	"barra_info.h"
 	"fundo.h"
@@ -571,13 +572,13 @@
 	"mapa.h"
 	"caixas.h"
 
-1663604309 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
+1663606996 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
 
 1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
 	<string.h>
 	"mapa.h"
 
-1663605222 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
+1663607002 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
 	"raylib.h"
 	"menu_principal.h"
 	"mapa.h"
@@ -599,11 +600,11 @@
 	"jogo.h"
 	"render_player.h"
 
-1663604918 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
+1663606968 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
 	"save.h"
 	<stdio.h>
 
-1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
+1663606940 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
 	"jogo.h"
 	"mapa.h"
 
