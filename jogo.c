@@ -5,13 +5,47 @@
 #include "render_jogo.h"
 #include "jogo.h"
 #include "caixas.h"
+#include "fundo.h"
+
+#define TAM_BARRA 10
+
+// Macro para a escala dos objetos na tela
+#define SCALE Scale(render.texture.height)
+
+void inicializaPlayer(Player *player, Mapa mapa){
+
+    player->render = (Rectangle){.width = TAM_TILES,
+                            .height = TAM_TILES,
+                            .x = (player->x * TAM_TILES),
+                            .y = (player->y * TAM_TILES)};
+    player->x = 1;
+    player->y = mapa.linhas - 2;
+    player->vidas = 3;
+    player->pontos = 0;
+
+    player->render.x = player->x * TAM_TILES;
+    player->render.y = player->y * TAM_TILES;
+
+}
+
+void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas){
+
+    player->fase++;
+    if (player->vidas < 3)
+        player->vidas++;
+    player->x = 1;
+    player->y = mapa.linhas - 2;
+    (*caixasTotal)++;
+    *caixasAbertas = 0;
+
+}
 
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
           int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]) {
 
     if (player->estado == IDLE && itens[1].flag == 0)
     {
-        // funções de movimentação aqui:
+        // funï¿½ï¿½es de movimentaï¿½ï¿½o aqui:
         if (IsKeyPressed(KEY_LEFT))
             MovimentoHorizontal(mapa, player, -1);
         if (IsKeyPressed(KEY_RIGHT))
@@ -20,13 +54,22 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
             MovimentoVertical(mapa, player, -1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_DOWN))
             MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, itens);
-        if (IsKeyPressed(KEY_C)) // DEBUG: Cair
-            player->y = 8;
+        if (IsKeyPressed(KEY_S))
+            //Confirmar save com o player? Se possivel
+            salvaJogo (mapa, player);
     }
 
     AnimaPlayerPos(player, mapa->matriz);
     RenderJogo(*mapa, tileset, player, frames, caixa, explosao, renderPos, itens);
 }
+
+/* Controle de movimento vertical
+   @param *mapa Utilizado para atualizar posicoes na matriz
+   @param *player Estrutura contem localizacao atual do jogador
+   @param direcao Movimento desejado pelo jogador (-1 para cima ou +1 para baixo)
+   @param *caixasAbertas Numero de caixas ja abertas nessa fase. Utilizado para controle de caixas
+   @param caixas Vetor com os itens desta fase
+   @param itens Vetor que controle animacao ao receber cada item */
 
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]){
     //Localizacao do player e portas na matriz mapa
@@ -34,7 +77,7 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
     int portaX, portaY, item;
 
     //Player esta em porta?
-    if (isdigit(posAtualPlayer) && direcao == -1){
+    if (isdigit(posAtualPlayer)){
         busca_porta(*mapa, player->y, player->x, &portaY, &portaX);
 
         player->x = portaX;
@@ -63,12 +106,13 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
 
                 case CHAVE:
                     //Som?
-                    //chaveEncontrada = true;
+                    player->chave = 1;
+                    mapa->matriz[mapa->fim_y][mapa->fim_x] = 'P';
                     itens[0].flag = 1;
                     break;
                 case BOMBA:
                     itens[1].flag = 1;
-                    //vidas--;
+                    player->vidas--;
                     break;
                 default:
                     if (item == 50) itens[6].flag = 1;
@@ -76,12 +120,21 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
                     else if (item == 150) itens[4].flag = 1;
                     else if (item == 200) itens[3].flag = 1;
                     else if (item == 300) itens[2].flag = 1;
+                    player->pontos += item;
                     break;
 
         }
 
         return;
 
+    }
+
+    if (posAtualPlayer == 'P' && player->chave == 1){
+
+        //Fim de fase atual.
+        mapa->fim = 1;
+
+        return;
     }
 
     //Impede o jogador de andar por paredes
@@ -98,6 +151,11 @@ void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbert
     //Se nao estiver em escada, movimento vertical nao e permitido
 
 }
+
+/* Controle de movimento horizontal
+   @param *mapa Contem a matriz do jogo
+   @param *player Contem posicao atual do jogador
+   @param direcao Movimento desejado pelo jogador (-1 para esquerda e +1 para direta) */
 
 void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao){
 
@@ -136,13 +194,18 @@ void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao){
 
     }
 
-        /* Queda de mais de 3 blocos reduz vida.
-           Inserir funcao/variavel de controle de vidas quando construida(s) */
-
-        //ESTADO->MORRENDO
+    //Queda de 3 blocos ou mais reduz vida.
+    if (blocosQueda > 2)
+        player->vidas--;
 
 }
 
+/* Funcao Auxilia no movimento entre portas
+   @param mapa Contem matriz do jogo
+   @param playerX posicao linha do jogador
+   @param playerY posicao coluna do jogador
+   @param *x_porta recebe posicao linha da porta encontrada
+   @param *y_porta recebe posicao coluna da porta encontrada */
 
 void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta) {
 
@@ -157,7 +220,8 @@ void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta
 
         for (int j = 0; j < colunas; j++){
 
-            if ( mapa.matriz[i][j] == mapa.matriz[playerX][playerY] && (i != playerX && j != playerY) ) {
+            if ( mapa.matriz[i][j] == mapa.matriz[playerX][playerY]
+                && (i != playerX || j != playerY) ) {
 
                 *x_porta = i;
                 *y_porta = j;

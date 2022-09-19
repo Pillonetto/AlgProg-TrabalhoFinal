@@ -1,7 +1,9 @@
 #include "raylib.h"
 #include "menu_principal.h"
+#include "mapa.h"
+#include "jogo.h"
 
-void AtualizaMenu(Font fonteMenu, int *opc) {
+void AtualizaMenu(Font fonteMenu, int *opc, int nOpcoes) {
     // Se uma das setas verticais for pressionada com o menu "zerado", coloca a opcão em 0
     if (*opc == -1 && (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_DOWN)))
         *opc = 0;
@@ -9,13 +11,13 @@ void AtualizaMenu(Font fonteMenu, int *opc) {
     // SETA PARA CIMA
     else if (IsKeyPressed(KEY_UP)) {
         if (*opc == 0)
-            *opc = N_OPCOES-1;
+            *opc = nOpcoes-1;
         else
             *opc = *opc - 1;
     }
     // SETA PARA BAIXO
     else if (IsKeyPressed(KEY_DOWN)) {
-        if (*opc == N_OPCOES-1)
+        if (*opc == nOpcoes-1)
             *opc = 0;
         else
             *opc = *opc + 1;
@@ -51,16 +53,72 @@ void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle 
     }
 }
 
+void DesenhaLoad(RenderTexture2D render, Font fonte, int selecionada, Rectangle *select) {
+    char textoEnunciado[] = "Deseja carregar o jogo salvo?";
+    char textoOpcoes[N_OPCOES_LOAD][5] = {"Sim", "Nao"};
+    int i;
+    Vector2 textoPos;
+    int tamFonte = GetScreenHeight()/15;
+
+    textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoEnunciado, tamFonte, 0).x) / 2;
+    textoPos.y = GetScreenHeight()/2 - (tamFonte*1.5);
+    DrawTextEx(fonte, textoEnunciado, textoPos, tamFonte, 1, WHITE);
+
+    for (i = 0; i < N_OPCOES_LOAD; i++) {
+        // Alinha o texto horizontalmente ao centro da tela
+        textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoOpcoes[i], tamFonte, 0).x) / 2;
+        // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaçamento
+        textoPos.y = GetScreenHeight()/2 + (i*(tamFonte*1.5));
+
+        // Desenha e anima um retângulo em cima da opção selecionada
+        if (i == selecionada)
+        {
+            /* Anima o retângulo chegando na posição selecionada, movendo-se em 1/3 da distância
+            entre o retângulo e o texto a cada frame*/
+            if (select->y != textoPos.y)
+                select->y += (textoPos.y - select->y)/3;
+
+            DrawRectangleRec(*select, Fade(BLACK, 0.45));
+        }
+
+        // Desenha as opções
+        DrawTextEx(fonte, textoOpcoes[i], textoPos, tamFonte, 1, WHITE);
+    }
+}
+
+void ControlaLoad(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select, Mapa *mapa, Player *player) {
+    AtualizaMenu(fonteMenu, opc, N_OPCOES_LOAD);
+
+    if (IsKeyPressed(KEY_ENTER)) {
+        switch(*opc) {
+            case 0:
+                recuperaJogo(mapa, player);
+                *telaAtual = JOGO;
+                break;
+            case 1:
+                *opc = 0;
+                *telaAtual = MENU;
+                break;
+        }
+    }
+
+    ClearBackground(BLACK);
+    DesenhaLoad(render, fonteMenu, *opc, select);
+}
+
 void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select) {
 
-    AtualizaMenu(fonteMenu, opc);
+    AtualizaMenu(fonteMenu, opc, N_OPCOES);
 
     // Muda a tela conforme a opção escolhida
     if (IsKeyPressed(KEY_ENTER)) {
         switch(*opc) {
             case 0:
-            case 1:
                 *telaAtual = JOGO;
+                break;
+            case 1:
+                *opc = 0;
+                *telaAtual = SAVE;
                 break;
             case 2:
                 *telaAtual = RANK;

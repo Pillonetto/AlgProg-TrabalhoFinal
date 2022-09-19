@@ -21,20 +21,23 @@ int main() {
     SetTargetFPS(60);
 
 
-    // VARIÁVEIS -----------------------------------------------------
+    // VARIï¿½VEIS -----------------------------------------------------
 
     Mapa mapa;
 
-    // Variáveis de controle
+    // Variï¿½veis de controle
     int telaAtual = MENU;
-    int frames = 0; // Utilizada em animações
-    int opc = -1; // Opção do menu principal selecionada (inic. sem seleção)
-    Rectangle select; // Controla o botão de select do menu principal
+    int frames = 0; // Utilizada em animaï¿½ï¿½es
+    int opc = -1; // Opï¿½ï¿½o do menu principal selecionada (inic. sem seleï¿½ï¿½o)
+    Rectangle select; // Controla o botï¿½o de select do menu principal
     Player player;
+    player.fase = 1; //Inicializa o jogo pela primeira fase.
 
     // Flags
     int fecharJogo = false;
     int jogoInit = false;
+    int playerInit = false;
+    int mapaInit = false;
 
 
     // RESOURCES -----------------------------------------------------
@@ -49,21 +52,21 @@ int main() {
     player.spriteAtual.y = 0;
     // Fonte usada no menu
     Font fonteMenu = LoadFontEx("resources/alagard.ttf", 50, 0, 250);
-    // Coração usado na barra do jogo
+    // Coraï¿½ï¿½o usado na barra do jogo
     Texture2D vidaTextura = LoadTexture("resources/life_points.png");
     // Spritesheet utilizado para as caixas
     AnimacaoArr caixa;
     caixa.textura = LoadTexture("resources/chest_sprite.png");
     for (i = 0; i < N_ANIM; i++)
         caixa.source[i] = (Rectangle){0, 0, 30, 24};
-    /* Fundo do jogo, contendo a textura de cada camada e suas posições */
+    /* Fundo do jogo, contendo a textura de cada camada e suas posiï¿½ï¿½es */
     Background bg[N_BG];
     bg[0].textura = LoadTexture("resources/background_layer_1.png");
     bg[1].textura = LoadTexture("resources/background_layer_2.png");
     bg[2].textura = LoadTexture("resources/background_layer_3.png");
     for (i = 0; i < N_BG; i++)
         bg[i].y = -bg[i].textura.height/(i+2);
-    // Spritesheet utilizado nas explosões (bombas)
+    // Spritesheet utilizado nas explosï¿½es (bombas)
     AnimacaoItem explosao;
     explosao.textura = LoadTexture("resources/explosion.png");
     explosao.source = (Rectangle){0, 0, 64, 40};
@@ -87,9 +90,9 @@ int main() {
     }
 
 
-    // Textura onde será renderizado o jogo
+    // Textura onde serï¿½ renderizado o jogo
     RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
-    Rectangle renderSource = {.width=render.texture.width, .height=-render.texture.height}; // OpenGL inverte a textura por padrão
+    Rectangle renderSource = {.width=render.texture.width, .height=-render.texture.height}; // OpenGL inverte a textura por padrï¿½o
     Rectangle renderDest = {.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
     Vector2 renderPos = {0, 0};
 
@@ -99,13 +102,12 @@ int main() {
     //VARIAVEIS QUE DEVEM SER INICIALIZADAS A CADA NOVA FASE. Usadas aqui para testes
 
     int caixasTotal = 4;
-    int fase = 1;
     int caixasAbertas = 0;
     //Vetor que contem os itens que o player recebera
     int caixas[MAX_CAIXAS] = { 0 };
 
     //Preenchimento do vetor acima
-    preencheCaixas(caixasTotal, fase, caixas);
+    preencheCaixas(caixasTotal, player.fase, caixas);
 
     //FIM DE VARIAVEIS DE CAIXAS ---------------------------------------------------
 
@@ -123,34 +125,83 @@ int main() {
                 break;
 
             case JOGO:
-                /* Inicialização do jogo
-                Organizar em funções após criar o sistema de níveis */
+                /* Inicializaï¿½ï¿½o do jogo
+                Organizar em funï¿½ï¿½es apï¿½s criar o sistema de nï¿½veis */
                 if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
-                if (!jogoInit)
-                {
-                    CarregaMapa(&mapa);
+
+                if (!mapaInit){
+
+                    //CarregaMapa agora recebe o numero da fase para determinar o mapa
+                    CarregaMapa(&mapa, player.fase);
+                    mapaInit = true;
+
+                    //Inicio de fase
+                    player.chave = 0;
+
+                }
+
+                if (!playerInit){
+
+                    inicializaPlayer(&player, mapa);
+
+                    playerInit = true;
+
+                }
+
+
+                if (!jogoInit) {
+
+
                     for (i = 0; i < N_BG; i++) {
+
                         bg[i].x = -bg[i].textura.width/2;
                         bg[i].y = 0;
                     }
-                    player.render = (Rectangle){.width = TAM_TILES,
-                                                .height = TAM_TILES,
-                                                .x = (player.x * TAM_TILES),
-                                                .y = (player.y * TAM_TILES)};
-                    player.x = 6;
-                    player.y = 6;
-                    player.render.x = player.x * TAM_TILES;
-                    player.render.y = player.y * TAM_TILES;
+
                     UnloadRenderTexture(render);
                     render = LoadRenderTexture(TAM_TILES*mapa.colunas, TAM_TILES*mapa.linhas + TAM_BARRA);
                     renderDest.width = render.texture.width*SCALE;
                     renderDest.height = render.texture.height*SCALE;
                     renderSource.width = render.texture.width;
                     renderSource.height = -render.texture.height;
+
                     jogoInit = true;
+
                 }
-                DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
-                Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens);
+
+                //CONDICOES DE FIM DE FASE
+                if (!mapa.fim) {
+                    //Essas funcoes sao as mesmas pra todas as fases
+                    DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
+                    //Jogo roda ate alterar player encontrar chave e interagir com o fim da fase (esse controle esta na movimentoVertical)
+                    Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens);
+                }
+                //else if (player.vidas < 0)
+                    //tela de morte
+                // Se jogo terminar e nao for por vidas, jogador chegou ao fim da fase.
+                else {
+                    //Adicionar tela de fim de fase
+
+                    passaFase(&player, mapa, &caixasTotal, &caixasAbertas);
+                    preencheCaixas(caixasTotal, player.fase, caixas);
+
+                    //Reset de flags
+                    mapa.fim = 0;
+                    mapaInit = false;
+                    jogoInit = false;
+
+                    // Reset de caixas
+                    for (i = 0; i < N_ANIM; i++)
+                        caixa.source[i] = (Rectangle){0, 0, 30, 24};
+
+                }
+
+
+                break;
+
+            case SAVE:
+                //Se player confirmar o carregamento do save
+                DesenhaFundoMenu(bg, frames);
                 break;
 
             case FECHAR:
@@ -176,7 +227,11 @@ int main() {
                     break;
 
                 case JOGO:
-                    BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura);
+                    BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura, player);
+                    break;
+
+                case SAVE:
+                    ControlaLoad(render, fonteMenu, &opc, &telaAtual, &select, &mapa, &player);
                     break;
             }
 
@@ -214,6 +269,6 @@ void ContaFrames(int *frames) {
 
 float Scale(float alturaRender) {
     /* Retorna o coeficiente que aumenta a altura da tela para
-    2/3 da altura da resolução utilizada pelo monitor */
+    2/3 da altura da resoluï¿½ï¿½o utilizada pelo monitor */
     return 3 * GetMonitorHeight(0) / (4 * alturaRender);
 }

@@ -3,6 +3,8 @@
 
 #define TAM_BARRA 10 // Tamanho vertical da barra de informações
 
-void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura);
+#include "jogo.h"
+
+void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura, Player player);
 
 #endif // BARRA_INFO_H

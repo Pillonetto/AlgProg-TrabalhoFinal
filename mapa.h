@@ -8,8 +8,11 @@ typedef struct {
     char matriz[MAPA_L][MAPA_C];
     int linhas;
     int colunas;
+    int fim;
+    int fim_x;
+    int fim_y;
 } Mapa;
 
-void CarregaMapa(Mapa *mapa);
+void CarregaMapa(Mapa *mapa, int fase);
 
 #endif // MAPA_H
