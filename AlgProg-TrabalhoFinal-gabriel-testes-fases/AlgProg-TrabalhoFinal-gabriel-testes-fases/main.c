@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "raylib.h"
 #include "barra_info.h"
 #include "fundo.h"
@@ -5,6 +6,7 @@
 #include "render_jogo.h"
 #include "mapa.h"
 #include "caixas.h"
+#include "ranking.h"
 
 // Macro para a escala dos objetos na tela
 #define SCALE Scale(render.texture.height)
@@ -38,6 +40,7 @@ int main() {
     int jogoInit = false;
     int playerInit = false;
     int mapaInit = false;
+    int menuInit = false;
 
 
     // RESOURCES -----------------------------------------------------
@@ -64,8 +67,6 @@ int main() {
     bg[0].textura = LoadTexture("resources/background_layer_1.png");
     bg[1].textura = LoadTexture("resources/background_layer_2.png");
     bg[2].textura = LoadTexture("resources/background_layer_3.png");
-    for (i = 0; i < N_BG; i++)
-        bg[i].y = -bg[i].textura.height/(i+2);
     // Spritesheet utilizado nas explos�es (bombas)
     AnimacaoItem explosao;
     explosao.textura = LoadTexture("resources/explosion.png");
@@ -89,15 +90,12 @@ int main() {
         itens[i].velocidade = 2.5;
     }
 
-
     // Textura onde ser� renderizado o jogo
-    RenderTexture2D render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
-    Rectangle renderSource = {.width=render.texture.width, .height=-render.texture.height}; // OpenGL inverte a textura por padr�o
-    Rectangle renderDest = {.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
-    Vector2 renderPos = {0, 0};
+    RenderTexture2D render;
+    Rectangle renderSource;
+    Rectangle renderDest;
+    Vector2 renderPos;
 
-    select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
-                         .width = render.texture.width*SCALE};
 
     //VARIAVEIS QUE DEVEM SER INICIALIZADAS A CADA NOVA FASE. Usadas aqui para testes
 
@@ -111,6 +109,9 @@ int main() {
 
     //FIM DE VARIAVEIS DE CAIXAS ---------------------------------------------------
 
+    //VETOR COM RANKING DO JOGO (NOME[3] + PONTUACAO)
+    Score ranking[RANKING_SIZE];
+
     // LOOP DO JOGO --------------------------------------------------
     while (!WindowShouldClose() && !fecharJogo)
     {
@@ -121,13 +122,33 @@ int main() {
         switch(telaAtual)
         {
             case MENU:
+                if (!menuInit) {
+                    render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
+                    // Height negativo pois o OpenGL inverte a textura por padrão
+                    renderSource = (Rectangle){.width=render.texture.width, .height=-render.texture.height};
+                    renderDest = (Rectangle){.width=render.texture.width*SCALE, .height=render.texture.height*SCALE};
+                    renderPos = (Vector2){0, 0};
+                    select = (Rectangle){.y = 3 * render.texture.height*SCALE/4,
+                         .width = render.texture.width*SCALE};
+                    for (i = 0; i < N_BG; i++) {
+                        bg[i].y = -bg[i].textura.height/(i+2);
+                        bg[i].x = 0;
+                    }
+                    fecharJogo = false;
+                    jogoInit = false;
+                    playerInit = false;
+                    mapaInit = false;
+                    menuInit = true;
+                }
                 DesenhaFundoMenu(bg, frames);
                 break;
 
+            case GAME_OVER:
+            case SAVE:
             case JOGO:
                 /* Inicializa��o do jogo
                 Organizar em fun��es ap�s criar o sistema de n�veis */
-                if (IsKeyPressed(KEY_R)) jogoInit = false; // teste
+                if (IsKeyPressed(KEY_R)) playerInit = false; // teste
 
                 if (!mapaInit){
 
@@ -138,11 +159,19 @@ int main() {
                     //Inicio de fase
                     player.chave = 0;
 
-                }
 
+                }
+                //Inicializacao de player e ranking
                 if (!playerInit){
 
                     inicializaPlayer(&player, mapa);
+
+                    //Inicializacao do array de Scores
+                    leRanking(ranking);
+
+                    //Ver ranking no terminal
+                    for (int i = 0; i < RANKING_SIZE; i++)
+                        printf("%s %d\n", ranking[i].nome, ranking[i].pontos);
 
                     playerInit = true;
 
@@ -174,13 +203,35 @@ int main() {
                     //Essas funcoes sao as mesmas pra todas as fases
                     DesenhaFundoJogo(bg, TAM_TILES*mapa.linhas, player);
                     //Jogo roda ate alterar player encontrar chave e interagir com o fim da fase (esse controle esta na movimentoVertical)
-                    Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens);
+                    Jogo(&mapa, tileset, &player, frames, &caixa, &caixasAbertas, caixas, &explosao, &renderPos, itens, &telaAtual);
                 }
                 //else if (player.vidas < 0)
                     //tela de morte
+                // Se jogador terminou ultima fase
+                else if(player.fase > 2){
+
+                    int posicao = checkInserir(ranking, player.pontos);
+                    //Inserir pontuacao no ranking?
+                    if(posicao > -1){
+
+                        //Para ver a posicao adquirida no terminal
+                        printf("POSICAO: %d\n", posicao);
+
+                        //Nome seria recebido por tela de input
+                        Score entrada = {"ABC", player.pontos};
+
+                        insereScore(ranking, entrada, posicao);
+
+                        //Provisorio, fase acaba e o Score eh inserido se a pontuacao foi suficiente
+                        telaAtual = FECHAR;
+
+                    }
+
+                    //Alterar tela depois de atualizar o ranking.
+
+                }
                 // Se jogo terminar e nao for por vidas, jogador chegou ao fim da fase.
                 else {
-                    //Adicionar tela de fim de fase
 
                     passaFase(&player, mapa, &caixasTotal, &caixasAbertas);
                     preencheCaixas(caixasTotal, player.fase, caixas);
@@ -196,12 +247,11 @@ int main() {
 
                 }
 
-
                 break;
 
-            /* case SAVE:
-                Se player confirmar o carregamento do save
-                recuperaJogo (&mapa, &player); */
+            case LOAD:
+                DesenhaFundoMenu(bg, frames);
+                break;
 
             case FECHAR:
                 fecharJogo = true;
@@ -225,12 +275,20 @@ int main() {
                     MenuPrincipal(render, fonteMenu, &opc, &telaAtual, &select);
                     break;
 
+                case GAME_OVER:
+                case SAVE:
+                    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5));
                 case JOGO:
                     BarraInformacoes(TAM_TILES*mapa.linhas*SCALE, TAM_BARRA*SCALE, fonteMenu, vidaTextura, player);
+                    if (telaAtual == SAVE)
+                        menuSave(mapa, player, fonteMenu, &opc, &telaAtual, &select);
+                    if (telaAtual == GAME_OVER)
+                        gameOver(fonteMenu, &opc, &telaAtual, &select, &menuInit);
                     break;
 
-                //case SAVE:
-
+                case LOAD:
+                    ControlaLoad(render, fonteMenu, &opc, &telaAtual, &select, &mapa, &player, &mapaInit, &playerInit);
+                    break;
             }
 
 
