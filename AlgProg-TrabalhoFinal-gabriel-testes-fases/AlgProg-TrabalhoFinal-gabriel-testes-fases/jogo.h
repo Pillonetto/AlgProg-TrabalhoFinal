@@ -35,6 +35,7 @@ typedef struct {
     int fase;
     int estado; // Estado do player (idle, andando, caindo, etc)
     int direcao; // Direcao que o player está olhando (+1: direita, -1: esquerda)
+    int quedaDano; // Indica se o player deve perder vida com a queda
     Rectangle spriteAtual; // Corresponde ao sprite sendo usado atualmente (source para o DrawTexturePro)
     Rectangle render; // Retângulo que representa o player na tela do jogo (dest. para o DrawTexturePro)
 } Player;
@@ -42,7 +43,7 @@ typedef struct {
 void inicializaPlayer(Player *player, Mapa mapa);
 void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas);
 void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, int *caixasAbertas,
-          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS]);
+          int caixas[MAX_CAIXAS], AnimacaoItem *explosao, Vector2 *renderPos, AnimacaoItem itens[N_ITENS], int *telaAtual);
 void MovimentoVertical(Mapa *mapa, Player *player, int direcao, int *caixasAbertas, int caixas[MAX_CAIXAS], AnimacaoItem itens[N_ITENS]);
 void MovimentoHorizontal(Mapa *mapa, Player *player, int direcao);
 void busca_porta(Mapa mapa, int playerX, int playerY, int *x_porta, int *y_porta);

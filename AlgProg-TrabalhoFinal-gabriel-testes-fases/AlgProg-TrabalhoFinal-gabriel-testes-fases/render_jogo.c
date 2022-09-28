@@ -5,10 +5,10 @@
 #include "render_player.h"
 #include "render_jogo.h"
 
-void DesenhaItem(AnimacaoItem itens[N_ITENS], Rectangle playerPos, int frames, int i, AnimacaoItem *explosao) {
+void DesenhaItem(AnimacaoItem itens[N_ITENS], Player *player, int frames, int i, AnimacaoItem *explosao) {
     Vector2 origin = {.x = itens[i].dest.width/2, .y = itens[i].dest.height/2};
-    float playerX = playerPos.x + playerPos.width/2;
-    float playerY = playerPos.y + playerPos.height/2;
+    float playerX = player->render.x + player->render.width/2;
+    float playerY = player->render.y + player->render.height/2;
 
     // Inicialização do render
     if (itens[i].source.x == 0) {
@@ -44,8 +44,11 @@ void DesenhaItem(AnimacaoItem itens[N_ITENS], Rectangle playerPos, int frames, i
         itens[i].rotation = 0;
         itens[i].velocidade = 2.5;
         itens[i].flag = 0;
-        if (i == 1) // Se for bomba, inicia explosão
+        if (i == 1) { // Se for bomba, inicia explosão
             explosao->flag = 1;
+            player->estado = MORRENDO;
+            player->spriteAtual.x = 0;
+        }
     }
 }
 
@@ -186,7 +189,7 @@ void DesenhaTiles(Mapa mapa, Texture2D tileset, AnimacaoArr *caixa, int frames) 
 }
 
 void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr *caixa, AnimacaoItem *explosao, Vector2 *renderPos,
-                AnimacaoItem itens[N_ITENS]) {
+                AnimacaoItem itens[N_ITENS], int *telaAtual) {
         int i;
 
         // Bordas laterais
@@ -201,11 +204,11 @@ void RenderJogo(Mapa mapa, Texture2D tileset, Player *player, int frames, Animac
 
         for (i = 0; i < N_ITENS; i++) {
             if (itens[i].flag == 1) {
-                DesenhaItem(itens, player->render, frames, i, explosao);
+                DesenhaItem(itens, player, frames, i, explosao);
             }
         }
 
-        DesenhaPlayer(player, frames);
+        DesenhaPlayer(player, frames, telaAtual);
 
         if (explosao->flag == 1)
             DesenhaExplosao(explosao, player->render, renderPos);

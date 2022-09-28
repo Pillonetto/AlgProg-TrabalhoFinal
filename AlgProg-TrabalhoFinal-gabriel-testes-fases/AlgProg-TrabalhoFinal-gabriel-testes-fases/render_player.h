@@ -16,6 +16,7 @@
 
 void AnimaPlayerPos(Player *player, char mapa[MAPA_L][MAPA_C]);
 void AnimaPlayerSprite(Player *player, int frames, int numSprites, int frameRate);
-void DesenhaPlayer(Player *player, int frames);
+void AnimaPlayerMorte(Player *player, int frames, int *telaAtual);
+void DesenhaPlayer(Player *player, int frames, int *telaAtual);
 
 #endif // RENDER_PLAYER_H
