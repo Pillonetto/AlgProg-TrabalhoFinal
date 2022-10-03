@@ -47,6 +47,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="caixas.h" />
+		<Unit filename="controle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="controle.h" />
 		<Unit filename="fundo.c">
 			<Option compilerVar="CC" />
 		</Unit>
