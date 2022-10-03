@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "raylib.h"
 #include "barra_info.h"
 #include "fundo.h"
@@ -5,6 +6,7 @@
 #include "render_jogo.h"
 #include "mapa.h"
 #include "caixas.h"
+#include "ranking.h"
 
 // Macro para a escala dos objetos na tela
 #define SCALE Scale(render.texture.height)
@@ -107,15 +109,22 @@ int main() {
 
     //FIM DE VARIAVEIS DE CAIXAS ---------------------------------------------------
 
+    //VETOR COM RANKING DO JOGO (NOME[3] + PONTUACAO)
+    Score ranking[RANKING_SIZE];
+    int posicao;
+    char nome[NOME_SIZE] = { 0 }; // Nome que irá para o ranking
+
     // LOOP DO JOGO --------------------------------------------------
     while (!WindowShouldClose() && !fecharJogo)
     {
+
         // Desenha o jogo na textura ------------------------------------------
         BeginTextureMode(render);
 
         ClearBackground(BLACK);
         switch(telaAtual)
         {
+            case RANK:
             case MENU:
                 if (!menuInit) {
                     render = LoadRenderTexture(bg[0].textura.width/2, bg[0].textura.height/2);
@@ -129,7 +138,9 @@ int main() {
                         bg[i].y = -bg[i].textura.height/(i+2);
                         bg[i].x = 0;
                     }
-                    fecharJogo = false;
+                    //Inicializacao do array de Scores
+                    leRanking(ranking);
+
                     jogoInit = false;
                     playerInit = false;
                     mapaInit = false;
@@ -141,26 +152,29 @@ int main() {
             case GAME_OVER:
             case SAVE:
             case JOGO:
-                /* Inicializa��o do jogo
-                Organizar em fun��es ap�s criar o sistema de n�veis */
-                if (IsKeyPressed(KEY_R)) playerInit = false; // teste
 
-                if (!mapaInit){
-
-                    //CarregaMapa agora recebe o numero da fase para determinar o mapa
-                    CarregaMapa(&mapa, player.fase);
-                    mapaInit = true;
-
-                    //Inicio de fase
-                    player.chave = 0;
-
-                }
-
+                //Inicializacao de player
                 if (!playerInit){
 
                     inicializaPlayer(&player, mapa);
 
                     playerInit = true;
+
+                }
+
+                /* Inicializa��o do jogo */
+                if (!mapaInit){
+
+                    CarregaMapa(&mapa, player.fase);
+                    mapa.fim = false;
+                    mapaInit = true;
+
+                    for (i = 0; i < N_ANIM; i++)
+                    caixa.source[i] = (Rectangle){0, 0, 30, 24};
+
+                    //Inicio de fase
+                    player.chave = 0;
+
 
                 }
 
@@ -194,9 +208,15 @@ int main() {
                 }
                 //else if (player.vidas < 0)
                     //tela de morte
+                // Se jogador terminou ultima fase
+                else if(player.fase > 2){
+
+                    telaAtual = GAME_OVER;
+                    mapa.fim = 0;
+
+                }
                 // Se jogo terminar e nao for por vidas, jogador chegou ao fim da fase.
                 else {
-                    //Adicionar tela de fim de fase
 
                     passaFase(&player, mapa, &caixasTotal, &caixasAbertas);
                     preencheCaixas(caixasTotal, player.fase, caixas);
@@ -212,9 +232,9 @@ int main() {
 
                 }
 
-
                 break;
 
+            case ADD_RANK:
             case LOAD:
                 DesenhaFundoMenu(bg, frames);
                 break;
@@ -241,6 +261,12 @@ int main() {
                     MenuPrincipal(render, fonteMenu, &opc, &telaAtual, &select);
                     break;
 
+                case RANK:
+                    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5));
+                    menuRank(fonteMenu, ranking, &telaAtual);
+                    break;
+
+                case ADD_RANK:
                 case GAME_OVER:
                 case SAVE:
                     DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5));
@@ -249,7 +275,9 @@ int main() {
                     if (telaAtual == SAVE)
                         menuSave(mapa, player, fonteMenu, &opc, &telaAtual, &select);
                     if (telaAtual == GAME_OVER)
-                        gameOver(fonteMenu, &opc, &telaAtual, &select, &menuInit);
+                        gameOver(fonteMenu, &opc, &telaAtual, &select, &menuInit, ranking, &posicao, player.pontos);
+                    if (telaAtual == ADD_RANK)
+                        menuAddRank(fonteMenu, nome, ranking, posicao, player.pontos, &telaAtual, &menuInit);
                     break;
 
                 case LOAD:

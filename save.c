@@ -49,7 +49,7 @@ void menuSave(Mapa mapa, Player player, Font fonte, int *opc, int *telaAtual, Re
 //Salvar Mapa e Player.
 void salvaJogo (Mapa mapa, Player player){
 
-    FILE *save = fopen("jogo.dat", "wb");
+    FILE *save = fopen("game_files/jogo.dat", "wb");
     if (save == NULL){
         printf("Erro ao ler arquivo");
         return;
@@ -82,7 +82,7 @@ void salvaJogo (Mapa mapa, Player player){
 //Obter informacoes do save
 void recuperaJogo (Mapa *mapa, Player *player){
 
-    FILE *save = fopen("jogo.dat", "rb");
+    FILE *save = fopen("game_files/jogo.dat", "rb");
 
     // Limites do mapa
     fread(&mapa->linhas, sizeof(int), 1, save);

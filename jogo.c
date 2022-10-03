@@ -20,7 +20,7 @@ void inicializaPlayer(Player *player, Mapa mapa){
                             .x = (player->x * TAM_TILES),
                             .y = (player->y * TAM_TILES)};
     player->x = 1;
-    player->y = mapa.linhas - 2;
+    player->y = 8;
     player->vidas = 3;
     player->pontos = 0;
     player->chave = 0;
@@ -35,7 +35,6 @@ void inicializaPlayer(Player *player, Mapa mapa){
 }
 
 void passaFase(Player *player, Mapa mapa, int *caixasTotal, int *caixasAbertas){
-
     player->fase++;
     if (player->vidas < 3)
         player->vidas++;
@@ -66,7 +65,8 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
         if (IsKeyPressed(KEY_S))
             *telaAtual = SAVE;
 
-        if (IsKeyPressed(KEY_B)) {
+        if (IsKeyPressed(KEY_B)) { // DEBUG
+            player->pontos += 100;
             player->vidas = 1;
             itens[1].flag = 1;
         }

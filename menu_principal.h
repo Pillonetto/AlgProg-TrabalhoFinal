@@ -9,6 +9,7 @@
 #define RANK      3
 #define SAVE      4
 #define GAME_OVER 5
+#define ADD_RANK  6
 
 #define N_OPCOES 4 // Número de opções no menu principal
 #define N_OPCOES_SL 2 // Número de opções do menu de load
