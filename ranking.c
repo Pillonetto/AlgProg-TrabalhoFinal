@@ -45,7 +45,7 @@ void salvaRanking(Score ranking[RANKING_SIZE]){
     if(ranks == NULL){
         printf("SalvaRanking : Erro ao ler arquivo\n");
         printf("Error number: %d", errno);
-        return 1;
+        return;
     }
 
 
@@ -66,14 +66,14 @@ void leRanking(Score ranking[RANKING_SIZE]){
     if(ranks == NULL){
         printf("Erro ao ler arquivo");
         printf("Error number: %d", errno);
-        return 1;
+        return;
     }
 
     Score copia;
 
     for(int i = 0; i < RANKING_SIZE; i++){
 
-        fscanf(ranks, "%s %d", &copia.nome, &copia.pontos);
+        fscanf(ranks, "%s %d", copia.nome, &copia.pontos);
         ranking[i] = copia;
 
     }

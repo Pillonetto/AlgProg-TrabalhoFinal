@@ -84,14 +84,15 @@
 	"mapa.h"
 	"jogo.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
+1664840890 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
 	"raylib.h"
 	"barra_info.h"
+	<string.h>
 
 1664387141 d:\trabalhofinal\algprog-trabalhofinal\barra_info.h
 	"jogo.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
+1664840936 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
 	"raylib.h"
 	"fundo.h"
 
@@ -104,7 +105,7 @@
 
 1664387141 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
 
-1664839864 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+1664840948 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
 	<stdio.h>
 	<ctype.h>
 	"raylib.h"
@@ -118,7 +119,7 @@
 1664387141 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
 	"jogo.h"
 
-1664840177 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+1664840955 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
 	<stdio.h>
 	"raylib.h"
 	"barra_info.h"
@@ -128,21 +129,26 @@
 	"mapa.h"
 	"caixas.h"
 	"ranking.h"
+	"save.h"
+	"game_over.h"
 
-1664839644 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+1664840771 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+	"mapa.h"
+	"jogo.h"
 
 1664387141 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
 	"jogo.h"
 	"mapa.h"
 
-1664839746 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
+1664840981 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
 	"raylib.h"
-	"menu_principal.h"
 	"mapa.h"
 	"jogo.h"
 	"render_jogo.h"
+	"menu_principal.h"
+	"save.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+1664841119 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
 	<ctype.h>
 	<stdlib.h>
 	<math.h>
@@ -150,7 +156,7 @@
 	"render_player.h"
 	"render_jogo.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
+1664841124 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
 	<math.h>
 	<ctype.h>
 	"raylib.h"
@@ -159,7 +165,7 @@
 	"render_player.h"
 	"menu_principal.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
+1664840964 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
 	<string.h>
 	"mapa.h"
 
@@ -245,7 +251,7 @@
 	"mapa.h"
 	"jogo.h"
 
-1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\caixas.c
+1664840920 source:d:\trabalhofinal\algprog-trabalhofinal\caixas.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -632,7 +638,8 @@
 	"jogo.h"
 	"mapa.h"
 
-1664838719 source:d:\trabalhofinal\algprog-trabalhofinal\game_over.c
+1664840942 source:d:\trabalhofinal\algprog-trabalhofinal\game_over.c
+	<string.h>
 	"raylib.h"
 	"game_over.h"
 	"menu_principal.h"
@@ -763,13 +770,19 @@
 
 1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\game_over.h
 
-1664838733 d:\trabalhofinal\algprog-trabalhofinal\ranking.h
+1664841085 d:\trabalhofinal\algprog-trabalhofinal\ranking.h
 
-1664838729 source:d:\trabalhofinal\algprog-trabalhofinal\ranking.c
+1664841100 source:d:\trabalhofinal\algprog-trabalhofinal\ranking.c
 	"raylib.h"
 	"ranking.h"
 	<stdio.h>
 	<unistd.h>
 	<stdlib.h>
 	"menu_principal.h"
+
+1664840927 source:d:\trabalhofinal\algprog-trabalhofinal\controle.c
+	"raylib.h"
+	"controle.h"
+
+1664840597 d:\trabalhofinal\algprog-trabalhofinal\controle.h
 

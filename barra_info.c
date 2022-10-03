@@ -1,12 +1,12 @@
 #include "raylib.h"
 #include "barra_info.h"
+#include <string.h>
 
-/* * * WIP * * */
 void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vidaTextura, Player player) {
 
     int i;
     float tamFonte = tamBarra*0.8f;
-    char *informacoes;
+    char informacoes[200] = {0};
     char chave[50] = "Chave Encontrada";
     Vector2 tamStrChave = MeasureTextEx(fonte, chave, tamFonte, 1);
 
@@ -20,7 +20,7 @@ void BarraInformacoes(float posBarra, float tamBarra, Font fonte, Texture2D vida
     bool chaveEncontrada = player.chave;
 
     // String que segura as informações
-    informacoes = TextFormat("Vidas: \t\t\t\t\t\t\tNivel: %d \t Pontos: %d", level, pontos);
+    strcpy(informacoes, TextFormat("Vidas: \t\t\t\t\t\t\tNivel: %d \t Pontos: %d", level, pontos));
 
     // Desenhando a barra e o texto na tela:
     DrawRectangle(0, posBarra, GetScreenWidth(), tamBarra, (Color){25,25,35,255});

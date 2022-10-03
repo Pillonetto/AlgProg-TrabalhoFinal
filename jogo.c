@@ -64,12 +64,6 @@ void Jogo(Mapa *mapa, Texture2D tileset, Player *player, int frames, AnimacaoArr
             MovimentoVertical(mapa, player, +1, caixasAbertas, caixas, itens);
         if (IsKeyPressed(KEY_S))
             *telaAtual = SAVE;
-
-        if (IsKeyPressed(KEY_B)) { // DEBUG
-            player->pontos += 100;
-            player->vidas = 1;
-            itens[1].flag = 1;
-        }
     }
 
     AnimaPlayerPos(player, mapa->matriz);

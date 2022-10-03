@@ -1,6 +1,9 @@
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 
+#include "mapa.h"
+#include "jogo.h"
+
 // TELAS ---------------------------------------
 #define FECHAR   -1
 #define MENU      0
@@ -18,5 +21,7 @@
 void AtualizaMenu(Font fonteMenu, int *opc, int nOpcoes);
 void DesenhaMenu(RenderTexture2D render, Font fonte, int selecionada, Rectangle *select);
 void MenuPrincipal(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select);
+void ControlaLoad(RenderTexture2D render, Font fonteMenu, int *opc, int *telaAtual, Rectangle *select, Mapa *mapa, Player *player,
+                  int *mapaInit, int *playerInit);
 
 #endif // MENU_PRINCIPAL_H

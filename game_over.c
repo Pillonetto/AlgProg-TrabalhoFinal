@@ -1,3 +1,4 @@
+#include <string.h>
 #include "raylib.h"
 #include "game_over.h"
 #include "menu_principal.h"

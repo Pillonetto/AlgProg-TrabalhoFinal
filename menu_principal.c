@@ -1,8 +1,9 @@
 #include "raylib.h"
-#include "menu_principal.h"
 #include "mapa.h"
 #include "jogo.h"
 #include "render_jogo.h"
+#include "menu_principal.h"
+#include "save.h"
 
 void AtualizaMenu(Font fonteMenu, int *opc, int nOpcoes) {
     // Se uma das setas verticais for pressionada com o menu "zerado", coloca a opcão em 0
