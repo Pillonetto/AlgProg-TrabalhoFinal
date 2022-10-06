@@ -1,0 +1,805 @@
+# depslib dependency file v1.0
+1661613385 source:d:\trabalhofinal\trabalho_final\main.c
+	<string.h>
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"jogo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+
+1661613483 source:d:\trabalhofinal\trabalho_final\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+
+1661362265 d:\trabalhofinal\trabalho_final\definicoes.h
+	"raylib.h"
+
+1660762897 d:\trabalhofinal\trabalho_final\menu_principal.c
+	"raylib.h"
+	"definicoes.h"
+
+1661613580 source:d:\trabalhofinal\trabalho_final\render_jogo.c
+	"raylib.h"
+	"render_jogo.h"
+
+1660775814 source:d:\trabalhofinal\trabalho_final\carrega_mapa.c
+	<stdio.h>
+
+1661612017 source:d:\trabalhofinal\trabalho_final\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1661613590 source:d:\trabalhofinal\trabalho_final\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+
+1661613589 source:d:\trabalhofinal\trabalho_final\jogo.c
+	"raylib.h"
+	"jogo.h"
+	"render_player.h"
+
+1661612037 source:d:\trabalhofinal\trabalho_final\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1661363041 source:d:\trabalhofinal\trabalho_final\novomovimento.c
+	"controleMatriz.h"
+	"definicoes.h"
+
+1661352300 d:\trabalhofinal\trabalho_final\controlematriz.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+
+1661352300 source:d:\trabalhofinal\trabalho_final\controlematriz.c
+	"controleMatriz.h"
+
+1661612794 d:\trabalhofinal\trabalho_final\barra_info.h
+
+1661613186 source:d:\trabalhofinal\trabalho_final\mapa.c
+	"mapa.h"
+
+1661613228 d:\trabalhofinal\trabalho_final\mapa.h
+
+1661613346 d:\trabalhofinal\trabalho_final\fundo.h
+	"jogo.h"
+
+1661613360 d:\trabalhofinal\trabalho_final\jogo.h
+	"mapa.h"
+
+1661613437 d:\trabalhofinal\trabalho_final\render_player.h
+	"jogo.h"
+
+1661613383 d:\trabalhofinal\trabalho_final\menu_principal.h
+
+1661613401 d:\trabalhofinal\trabalho_final\render_jogo.h
+	"mapa.h"
+	"jogo.h"
+
+1664840890 source:d:\trabalhofinal\algprog-trabalhofinal\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+	<string.h>
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\barra_info.h
+	"jogo.h"
+
+1664840936 source:d:\trabalhofinal\algprog-trabalhofinal\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\fundo.h
+	"jogo.h"
+
+1664838188 d:\trabalhofinal\algprog-trabalhofinal\jogo.h
+	"mapa.h"
+	"raylib.h"
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\mapa.h
+
+1664840948 source:d:\trabalhofinal\algprog-trabalhofinal\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+	"fundo.h"
+	"menu_principal.h"
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\render_player.h
+	"jogo.h"
+
+1664840955 source:d:\trabalhofinal\algprog-trabalhofinal\main.c
+	<stdio.h>
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+	"ranking.h"
+	"save.h"
+	"game_over.h"
+
+1664840771 d:\trabalhofinal\algprog-trabalhofinal\menu_principal.h
+	"mapa.h"
+	"jogo.h"
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1664840981 source:d:\trabalhofinal\algprog-trabalhofinal\menu_principal.c
+	"raylib.h"
+	"mapa.h"
+	"jogo.h"
+	"render_jogo.h"
+	"menu_principal.h"
+	"save.h"
+
+1664841119 source:d:\trabalhofinal\algprog-trabalhofinal\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1664841124 source:d:\trabalhofinal\algprog-trabalhofinal\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+	"menu_principal.h"
+
+1664840964 source:d:\trabalhofinal\algprog-trabalhofinal\mapa.c
+	<string.h>
+	"mapa.h"
+
+1661891917 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1661887514 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\barra_info.h
+	"jogo.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\fundo.h
+	"jogo.h"
+
+1661889621 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\jogo.h
+	"mapa.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\mapa.h
+
+1661889996 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_player.h
+	"jogo.h"
+
+1661816005 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1661892751 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1661719711 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\menu_principal.h
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\mapa.c
+	<string.h>
+	"mapa.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+
+1661816005 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1661719711 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1661816320 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1661816005 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\sandrotf\new folder\algprog-trabalhofinal\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1664840920 source:d:\trabalhofinal\algprog-trabalhofinal\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\barra_info.h
+	"jogo.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\jogo.h
+	"mapa.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\mapa.h
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\fundo.h
+	"jogo.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\render_player.h
+	"jogo.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1662066531 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1661941383 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\menu_principal.h
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\mapa.c
+	<string.h>
+	"mapa.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1661941383 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
+	"jogo.h"
+
+1663326063 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
+	"mapa.h"
+	"raylib.h"
+
+1663326063 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.h
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
+	"jogo.h"
+
+1663326063 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
+	<string.h>
+	"mapa.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
+	"jogo.h"
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1663326063 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+	"fundo.h"
+
+1663326115 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
+	"save.h"
+	<stdio.h>
+
+1663326115 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
+	"jogo.h"
+	"mapa.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
+	"jogo.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
+	"mapa.h"
+	"raylib.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.h
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
+	"jogo.h"
+
+1664385333 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+	"fundo.h"
+	"menu_principal.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
+	"jogo.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+	"mapa.h"
+	"jogo.h"
+	"render_jogo.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+	"menu_principal.h"
+
+1663326759 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
+	"save.h"
+	<stdio.h>
+
+1663326759 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
+	"jogo.h"
+	"mapa.h"
+
+1663515576 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
+	<string.h>
+	"mapa.h"
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\barra_info.h
+	"jogo.h"
+
+1663606464 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.h
+	"mapa.h"
+	"raylib.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.h
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\fundo.h
+	"jogo.h"
+
+1663607233 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+	"fundo.h"
+	"menu_principal.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.h
+	"jogo.h"
+
+1663519873 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1663607368 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\main.c
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+
+1663606996 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.h
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\mapa.c
+	<string.h>
+	"mapa.h"
+
+1663607002 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\menu_principal.c
+	"raylib.h"
+	"menu_principal.h"
+	"mapa.h"
+	"jogo.h"
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1663519873 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+
+1663606968 source:c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.c
+	"save.h"
+	<stdio.h>
+
+1663606940 c:\users\rudie\downloads\algprog-trabalhofinal-cdfe324bf2d25b7a12366bbb6f5995dfcfbbb142\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\save.h
+	"jogo.h"
+	"mapa.h"
+
+1664387141 source:d:\trabalhofinal\algprog-trabalhofinal\save.c
+	"save.h"
+	"menu_principal.h"
+	<stdio.h>
+
+1664387141 d:\trabalhofinal\algprog-trabalhofinal\save.h
+	"jogo.h"
+	"mapa.h"
+
+1664840942 source:d:\trabalhofinal\algprog-trabalhofinal\game_over.c
+	<string.h>
+	"raylib.h"
+	"game_over.h"
+	"menu_principal.h"
+	"ranking.h"
+
+1664832144 d:\trabalhofinal\algprog-trabalhofinal\game_over.h
+	"ranking.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\barra_info.c
+	"raylib.h"
+	"barra_info.h"
+	<string.h>
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\barra_info.h
+	"jogo.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\jogo.h
+	"mapa.h"
+	"raylib.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\mapa.h
+
+1665021465 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\caixas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"raylib.h"
+	"caixas.h"
+	"jogo.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\caixas.h
+	"mapa.h"
+	"jogo.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\fundo.c
+	"raylib.h"
+	"fundo.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\fundo.h
+	"jogo.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\game_over.c
+	<string.h>
+	"raylib.h"
+	"game_over.h"
+	"menu_principal.h"
+	"ranking.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\game_over.h
+	"ranking.h"
+
+1665074648 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\menu_principal.h
+	"mapa.h"
+	"jogo.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\jogo.c
+	<stdio.h>
+	<ctype.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+	"jogo.h"
+	"caixas.h"
+	"fundo.h"
+	"menu_principal.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\render_player.h
+	"jogo.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\render_jogo.h
+	"jogo.h"
+	"mapa.h"
+
+1665074526 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\main.c
+	<stdio.h>
+	"raylib.h"
+	"barra_info.h"
+	"fundo.h"
+	"menu_principal.h"
+	"render_jogo.h"
+	"mapa.h"
+	"caixas.h"
+	"ranking.h"
+	"save.h"
+	"game_over.h"
+
+1665073417 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\mapa.c
+	<string.h>
+	"mapa.h"
+
+1665074574 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\menu_principal.c
+	"raylib.h"
+	"mapa.h"
+	"jogo.h"
+	"render_jogo.h"
+	"menu_principal.h"
+	"save.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\render_jogo.c
+	<ctype.h>
+	<stdlib.h>
+	<math.h>
+	"raylib.h"
+	"render_player.h"
+	"render_jogo.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\render_player.c
+	<math.h>
+	<ctype.h>
+	"raylib.h"
+	"render_jogo.h"
+	"jogo.h"
+	"render_player.h"
+	"menu_principal.h"
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\save.c
+	"save.h"
+	"menu_principal.h"
+	<stdio.h>
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\save.h
+	"jogo.h"
+	"mapa.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\ranking.h
+
+1665073469 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\ranking.c
+	"raylib.h"
+	"ranking.h"
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+	"menu_principal.h"
+
+1663619869 source:c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\game_over.c
+	"raylib.h"
+	"game_over.h"
+	"menu_principal.h"
+
+1663619869 c:\users\benhu\onedrive\documents\ufgrs - semestre 1\algprogtf\algprog-trabalhofinal\algprog-trabalhofinal-gabriel-testes-fases\algprog-trabalhofinal-gabriel-testes-fases\game_over.h
+
+1664841085 d:\trabalhofinal\algprog-trabalhofinal\ranking.h
+
+1664841100 source:d:\trabalhofinal\algprog-trabalhofinal\ranking.c
+	"raylib.h"
+	"ranking.h"
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+	"menu_principal.h"
+
+1664840927 source:d:\trabalhofinal\algprog-trabalhofinal\controle.c
+	"raylib.h"
+	"controle.h"
+
+1664840597 d:\trabalhofinal\algprog-trabalhofinal\controle.h
+
+1664841391 source:c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\controle.c
+	"raylib.h"
+	"controle.h"
+
+1664841391 c:\users\benhu\onedrive\햞ea de trabalho\algprog-trabalhofinal-sandro-testes\controle.h
+
