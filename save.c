@@ -26,21 +26,21 @@ void menuSave(Mapa mapa, Player player, Font fonte, int *opc, int *telaAtual, Re
     for (i = 0; i < N_OPCOES_SL; i++) {
         // Alinha o texto horizontalmente ao centro da tela
         textoPos.x = (GetScreenWidth() - MeasureTextEx(fonte, textoOpcoes[i], tamFonte, 0).x) / 2;
-        // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaçamento
+        // Coloca o texto na segunda metade vertical da tela, com a metade do tamanho da fonte de espaï¿½amento
         textoPos.y = GetScreenHeight()/2 + (i*(tamFonte*1.5));
 
-        // Desenha e anima um retângulo em cima da opção selecionada
+        // Desenha e anima um retï¿½ngulo em cima da opï¿½ï¿½o selecionada
         if (i == *opc)
         {
-            /* Anima o retângulo chegando na posição selecionada, movendo-se em 1/3 da distância
-            entre o retângulo e o texto a cada frame*/
+            /* Anima o retï¿½ngulo chegando na posiï¿½ï¿½o selecionada, movendo-se em 1/3 da distï¿½ncia
+            entre o retï¿½ngulo e o texto a cada frame*/
             if (select->y != textoPos.y)
                 select->y += (textoPos.y - select->y)/3;
 
             DrawRectangleRec(selectS, Fade(BLACK, 0.45));
         }
 
-        // Desenha as opções
+        // Desenha as opï¿½ï¿½es
         DrawTextEx(fonte, textoOpcoes[i], textoPos, tamFonte, 1, WHITE);
     }
 
@@ -83,6 +83,8 @@ void salvaJogo (Mapa mapa, Player player){
 void recuperaJogo (Mapa *mapa, Player *player){
 
     FILE *save = fopen("game_files/jogo.dat", "rb");
+
+    mapa->fim = 0;
 
     // Limites do mapa
     fread(&mapa->linhas, sizeof(int), 1, save);
